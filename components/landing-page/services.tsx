@@ -258,7 +258,7 @@ const AboutServicesSection = () => {
                   whileHover={{ scale: 1.05, rotate: 2 }}
                   className="absolute bottom-6 left-6 bg-yellow-500 text-black px-6 py-3 rounded-lg font-bold shadow-lg"
                 >
-                  <span className="text-2xl">5+</span>
+                  <span className="text-2xl">10+</span>
                   <div className="text-sm">Years of Excellence</div>
                 </motion.div>
               </motion.div>

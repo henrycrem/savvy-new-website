@@ -166,7 +166,7 @@ const WhyChooseUsSection = () => {
                   initial={{ scale: 1.1 }}
                   whileInView={{ scale: 1 }}
                   transition={{ duration: 0.8 }}
-                  src="/images/team.jpg" // Your team image path
+                  src="/images/why-us.jpg" // Your team image path
                   alt="Savvy Group Team"
                   className="w-full h-full object-cover"
                   onError={(e) => {
@@ -375,7 +375,7 @@ const WhyChooseUsSection = () => {
                   <Award size={24} className="text-black mx-auto mb-2" />
                 </motion.div>
                 <div className="text-black text-xs font-bold">TRUSTED</div>
-                <div className="text-black/80 text-xs">SINCE 2019</div>
+                <div className="text-black/80 text-xs">SINCE 2015</div>
               </div>
             </motion.div>
 

@@ -1,6 +1,5 @@
 "use client"
-
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import {
   Menu,
   X,
@@ -25,6 +24,8 @@ const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null)
   const [isDesktopDropdownOpen, setIsDesktopDropdownOpen] = useState(false)
+  const [logoError, setLogoError] = useState(false); // State to track logo loading errors
+  const logoRef = useRef<HTMLImageElement>(null);   // Ref to access the logo image element
 
   // Add this useEffect after the state declarations
   useEffect(() => {
@@ -35,10 +36,39 @@ const Navigation = () => {
         setIsDesktopDropdownOpen(false)
       }
     }
-
     document.addEventListener("click", handleClickOutside)
     return () => document.removeEventListener("click", handleClickOutside)
   }, [])
+
+  // Check if logo image exists on component mount
+  useEffect(() => {
+    const checkLogo = () => {
+      if (logoRef.current && logoRef.current.complete) {
+        // If image was already loaded (e.g., from cache) but failed
+        if (logoRef.current.naturalWidth === 0) {
+          setLogoError(true);
+        }
+      }
+    };
+
+    // Check immediately if the image is already loaded
+    checkLogo();
+
+    // Add event listeners for load and error
+    const imgElement = logoRef.current;
+    if (imgElement) {
+      imgElement.addEventListener('load', () => setLogoError(false));
+      imgElement.addEventListener('error', () => setLogoError(true));
+    }
+
+    // Cleanup
+    return () => {
+      if (imgElement) {
+        imgElement.removeEventListener('load', () => setLogoError(false));
+        imgElement.removeEventListener('error', () => setLogoError(true));
+      }
+    };
+  }, []);
 
   const navItems = [
     { name: "Home", href: "/" },
@@ -87,7 +117,6 @@ const Navigation = () => {
     { name: "About Us", href: "/about" },
     { name: "Contact Us", href: "/contact" },
   ]
-
   const socialIcons = [
     { name: "Facebook", icon: Facebook, href: "#", color: "hover:text-blue-600" },
     { name: "Twitter", icon: Twitter, href: "#", color: "hover:text-blue-400" },
@@ -95,15 +124,12 @@ const Navigation = () => {
     { name: "LinkedIn", icon: Linkedin, href: "#", color: "hover:text-blue-700" },
     { name: "YouTube", icon: Youtube, href: "#", color: "hover:text-red-600" },
   ]
-
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
   }
-
   const handleDropdownToggle = (index: number) => {
     setActiveDropdown(activeDropdown === index ? null : index)
   }
-
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -125,14 +151,24 @@ const Navigation = () => {
               whileTap={{ scale: 0.95 }}
               className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-lg flex items-center justify-center shadow-lg transition-transform duration-300"
             >
-              <span className="text-black font-bold text-xl">SG</span>
+              {/* Use image with fallback to SG text */}
+              {!logoError ? (
+                <img
+                  ref={logoRef}
+                  src="/images/savvy_logo.jpeg" // Replace 'logo.png' with your actual image filename
+                  alt="Savvy Group Logo"
+                  className="w-full h-full object-contain rounded-lg"
+                  onError={() => setLogoError(true)} // Handle error if image fails to load
+                />
+              ) : (
+                <span className="text-black font-bold text-xl">SG</span>
+              )}
             </motion.div>
             <div>
               <span className="text-2xl font-bold text-gray-900">Savvy Group</span>
               <p className="text-yellow-500 text-xs font-medium">Multi-Service Excellence</p>
             </div>
           </motion.div>
-
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -161,7 +197,6 @@ const Navigation = () => {
               )
             })}
           </motion.div>
-
           {/* Social Media Icons */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
@@ -188,7 +223,6 @@ const Navigation = () => {
               )
             })}
           </motion.div>
-
           {/* Mobile menu button */}
           <div className="lg:hidden">
             <motion.button
@@ -223,7 +257,6 @@ const Navigation = () => {
             </motion.button>
           </div>
         </div>
-
         {/* Navigation Menu */}
         <div className="border-t border-gray-200">
           <div className="flex items-center justify-between py-4">
@@ -263,7 +296,6 @@ const Navigation = () => {
                       </motion.div>
                     )}
                   </motion.a>
-
                   {/* Enhanced Dropdown Menu */}
                   {item.dropdown && (
                     <AnimatePresence>
@@ -314,7 +346,6 @@ const Navigation = () => {
                                 )
                               })}
                             </div>
-
                             {/* View All Services Button */}
                             <div className="pt-4 border-t border-gray-200">
                               <motion.a
@@ -338,7 +369,6 @@ const Navigation = () => {
                 </div>
               ))}
             </motion.div>
-
             {/* Get Quote Button */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -356,7 +386,6 @@ const Navigation = () => {
             </motion.div>
           </div>
         </div>
-
         {/* Mobile Navigation Menu */}
         <AnimatePresence>
           {isMobileMenuOpen && (
@@ -394,7 +423,6 @@ const Navigation = () => {
                     )
                   })}
                 </motion.div>
-
                 {/* Mobile Navigation Links */}
                 {navItems.map((item, index) => (
                   <motion.div
@@ -425,7 +453,6 @@ const Navigation = () => {
                         </motion.div>
                       )}
                     </motion.a>
-
                     {/* Enhanced Mobile Dropdown */}
                     <AnimatePresence>
                       {item.dropdown && activeDropdown === index && (
@@ -477,7 +504,6 @@ const Navigation = () => {
                     </AnimatePresence>
                   </motion.div>
                 ))}
-
                 {/* Mobile Social Media */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -503,7 +529,6 @@ const Navigation = () => {
                     )
                   })}
                 </motion.div>
-
                 {/* Mobile Get Quote Button */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -527,5 +552,4 @@ const Navigation = () => {
     </motion.nav>
   )
 }
-
 export default Navigation

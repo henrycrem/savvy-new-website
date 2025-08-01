@@ -116,6 +116,21 @@
   * {
     @apply border-border outline-ring/50;
   }
+   * {
+    font-variant-numeric: normal;
+    font-feature-settings: "tnum" 0, "lnum" 1;
+    @apply border-border outline-ring/50;
+  }
+   .font-numbers {
+    font-variant-numeric: lining-nums tabular-nums;
+    font-feature-settings: "tnum" 1, "lnum" 1;
+  }
+
+  /* Force system font for numbers if custom font fails */
+  .numbers-fallback {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-variant-numeric: lining-nums;
+  }
   body {
     @apply bg-background text-foreground;
   }
@@ -124,4 +139,37 @@
 body{
   overflow-x: hidden;
 
+}
+
+
+.cli-path {
+  clip-path: polygon(
+    31% 9%,
+    73% 10%,
+    100% 0,
+    100% 100%,
+    74% 93%,
+    25% 94%,
+    0 100%,
+    0 0
+  );
+}
+
+
+/* Additional number-specific styles */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Ensure all numeric content displays correctly */
+[data-numeric="true"] {
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+
+
+.h-image{
+    height: calc(var(--spacing) * 150) /* 24rem = 384px */;
 }
