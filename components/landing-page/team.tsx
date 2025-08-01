@@ -22,7 +22,7 @@ const TeamSection = () => {
 
   const teamMembers = [
     {
-      name: "Samuel Johnson",
+      name: "Sam Griffiths",
       position: "Chief Executive Officer",
       image: "/images/team-ceo.jpg", // Your actual image path
       fallbackGradient: "bg-gradient-to-br from-yellow-500 to-orange-600",
@@ -32,8 +32,8 @@ const TeamSection = () => {
       specialties: ["Strategic Planning", "Business Development", "Team Leadership"],
       serviceIcon: Award,
       contact: {
-        email: "samuel@savvygroup.com",
-        phone: "+231 555 0001",
+        email: "samgriffiths@savvygroup.com",
+        phone: "+231 886-445-092",
       },
     },
     {

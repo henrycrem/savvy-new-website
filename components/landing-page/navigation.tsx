@@ -141,7 +141,7 @@ const Navigation = () => {
             className="hidden xl:flex items-center space-x-8 text-sm"
           >
             {[
-              { icon: Phone, text: "(408) 555-0120" },
+              { icon: Phone, text: "(+231) 886-445-092" },
               { icon: Mail, text: "hello@savvygroup.com" },
               { icon: MapPin, text: "Monrovia, Liberia" },
             ].map((item, index) => {
@@ -351,7 +351,7 @@ const Navigation = () => {
                 whileTap={{ scale: 0.95 }}
                 className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-8 py-3 rounded-full font-bold hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
-                Get A Quote
+                Contact Us
               </motion.button>
             </motion.div>
           </div>
@@ -381,8 +381,8 @@ const Navigation = () => {
                   className="space-y-3 px-6 py-4 bg-gray-50 rounded-xl mx-4 border border-yellow-200"
                 >
                   {[
-                    { icon: Phone, text: "(408) 555-0120" },
-                    { icon: Mail, text: "hello@savvygroup.com" },
+                    { icon: Phone, text: "(+231) 886-445-092" },
+                    { icon: Mail, text: "info@savvygroup.com" },
                     { icon: MapPin, text: "Monrovia, Liberia" },
                   ].map((item, index) => {
                     const IconComponent = item.icon
@@ -516,7 +516,7 @@ const Navigation = () => {
                     whileTap={{ scale: 0.98 }}
                     className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-6 py-4 rounded-full font-bold hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 shadow-lg"
                   >
-                    Get A Quote
+                    Contact Us
                   </motion.button>
                 </motion.div>
               </motion.div>
