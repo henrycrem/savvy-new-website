@@ -1,13 +1,24 @@
+import HeroSection from "@/components/landing-page/hero";
+import ProcessSection from "@/components/landing-page/how-it-work";
+import Navigation from "@/components/landing-page/navigation";
+import AboutServicesSection from "@/components/landing-page/services";
+import TeamSection from "@/components/landing-page/team";
+// import TestimonialsSection from "@/components/landing-page/testimonials-section";
+import WhyChooseUsSection from "@/components/landing-page/why-us";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-       <h1 className="text-4xl sm:text-6xl font-bold text-center sm:text-left">
-        Savvy New Website Coming here Soon!
-       </h1>
-       </main>
+    <div className="font-sans ">
+      <Navigation/>
+      <HeroSection/>
+      <AboutServicesSection/>
+      <ProcessSection/>
+      <WhyChooseUsSection/>
+      <TeamSection/>
+      {/* <TestimonialsSection/> */}
+
+   
     </div>
   );
 }
