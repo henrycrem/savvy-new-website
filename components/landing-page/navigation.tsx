@@ -1,5 +1,7 @@
 "use client"
+
 import { useState, useEffect, useRef } from "react"
+import Link from "next/link"
 import {
   Menu,
   X,
@@ -24,8 +26,8 @@ const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null)
   const [isDesktopDropdownOpen, setIsDesktopDropdownOpen] = useState(false)
-  const [logoError, setLogoError] = useState(false); // State to track logo loading errors
-  const logoRef = useRef<HTMLImageElement>(null);   // Ref to access the logo image element
+  const [logoError, setLogoError] = useState(false)
+  const logoRef = useRef<HTMLImageElement>(null)
 
   // Add this useEffect after the state declarations
   useEffect(() => {
@@ -36,6 +38,7 @@ const Navigation = () => {
         setIsDesktopDropdownOpen(false)
       }
     }
+
     document.addEventListener("click", handleClickOutside)
     return () => document.removeEventListener("click", handleClickOutside)
   }, [])
@@ -46,29 +49,29 @@ const Navigation = () => {
       if (logoRef.current && logoRef.current.complete) {
         // If image was already loaded (e.g., from cache) but failed
         if (logoRef.current.naturalWidth === 0) {
-          setLogoError(true);
+          setLogoError(true)
         }
       }
-    };
+    }
 
     // Check immediately if the image is already loaded
-    checkLogo();
+    checkLogo()
 
     // Add event listeners for load and error
-    const imgElement = logoRef.current;
+    const imgElement = logoRef.current
     if (imgElement) {
-      imgElement.addEventListener('load', () => setLogoError(false));
-      imgElement.addEventListener('error', () => setLogoError(true));
+      imgElement.addEventListener("load", () => setLogoError(false))
+      imgElement.addEventListener("error", () => setLogoError(true))
     }
 
     // Cleanup
     return () => {
       if (imgElement) {
-        imgElement.removeEventListener('load', () => setLogoError(false));
-        imgElement.removeEventListener('error', () => setLogoError(true));
+        imgElement.removeEventListener("load", () => setLogoError(false))
+        imgElement.removeEventListener("error", () => setLogoError(true))
       }
-    };
-  }, []);
+    }
+  }, [])
 
   const navItems = [
     { name: "Home", href: "/" },
@@ -117,6 +120,7 @@ const Navigation = () => {
     { name: "About Us", href: "/about" },
     { name: "Contact Us", href: "/contact" },
   ]
+
   const socialIcons = [
     { name: "Facebook", icon: Facebook, href: "#", color: "hover:text-blue-600" },
     { name: "Twitter", icon: Twitter, href: "#", color: "hover:text-blue-400" },
@@ -124,18 +128,21 @@ const Navigation = () => {
     { name: "LinkedIn", icon: Linkedin, href: "#", color: "hover:text-blue-700" },
     { name: "YouTube", icon: Youtube, href: "#", color: "hover:text-red-600" },
   ]
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
   }
+
   const handleDropdownToggle = (index: number) => {
     setActiveDropdown(activeDropdown === index ? null : index)
   }
+
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="sticky top-0 z-50 bg-white shadow-lg border-b border-gray-200 transition-all duration-300"
+      className="sticky top-0  bg-white shadow-lg border-b border-gray-200 transition-all duration-300"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
@@ -146,29 +153,34 @@ const Navigation = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex items-center space-x-4"
           >
-            <motion.div
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              whileTap={{ scale: 0.95 }}
-              className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-lg flex items-center justify-center shadow-lg transition-transform duration-300"
-            >
-              {/* Use image with fallback to SG text */}
-              {!logoError ? (
-                <img
-                  ref={logoRef}
-                  src="/images/savvy_logo.jpeg" // Replace 'logo.png' with your actual image filename
-                  alt="Savvy Group Logo"
-                  className="w-full h-full object-contain rounded-lg"
-                  onError={() => setLogoError(true)} // Handle error if image fails to load
-                />
-              ) : (
-                <span className="text-black font-bold text-xl">SG</span>
-              )}
-            </motion.div>
-            <div>
-              <span className="text-2xl font-bold text-gray-900">Savvy Group</span>
-              <p className="text-yellow-500 text-xs font-medium">Multi-Service Excellence</p>
-            </div>
+            <Link href="/">
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-lg flex items-center justify-center shadow-lg transition-transform duration-300 cursor-pointer"
+              >
+                {/* Use image with fallback to SG text */}
+                {!logoError ? (
+                  <img
+                    ref={logoRef}
+                    src="/images/savvy_logo.jpeg"
+                    alt="Savvy Group Logo"
+                    className="w-full h-full object-contain rounded-lg"
+                    onError={() => setLogoError(true)}
+                  />
+                ) : (
+                  <span className="text-black font-bold text-xl">SG</span>
+                )}
+              </motion.div>
+            </Link>
+            <Link href="/">
+              <div className="cursor-pointer">
+                <span className="text-2xl font-bold text-gray-900">Savvy Group</span>
+                <p className="text-yellow-500 text-xs font-medium">Multi-Service Excellence</p>
+              </div>
+            </Link>
           </motion.div>
+
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -197,6 +209,7 @@ const Navigation = () => {
               )
             })}
           </motion.div>
+
           {/* Social Media Icons */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
@@ -215,7 +228,7 @@ const Navigation = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
-                  className={`w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 ${social.color} transition-all duration-300 shadow-sm hover:shadow-md`}
+                  className={`w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 ${social.color} transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer`}
                   aria-label={social.name}
                 >
                   <IconComponent size={18} />
@@ -223,12 +236,13 @@ const Navigation = () => {
               )
             })}
           </motion.div>
+
           {/* Mobile menu button */}
           <div className="lg:hidden">
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={toggleMobileMenu}
-              className="text-gray-700 hover:text-yellow-500 focus:outline-none focus:text-yellow-500 transition-colors duration-300"
+              className="text-gray-700 hover:text-yellow-500 focus:outline-none focus:text-yellow-500 transition-colors duration-300 cursor-pointer"
               aria-label="Toggle mobile menu"
             >
               <AnimatePresence mode="wait">
@@ -257,6 +271,7 @@ const Navigation = () => {
             </motion.button>
           </div>
         </div>
+
         {/* Navigation Menu */}
         <div className="border-t border-gray-200">
           <div className="flex items-center justify-between py-4">
@@ -272,7 +287,7 @@ const Navigation = () => {
                   <motion.a
                     whileHover={{ y: -2 }}
                     href={item.href}
-                    className="flex items-center space-x-2 text-gray-700 hover:text-yellow-500 font-semibold transition-colors duration-300 py-2"
+                    className="flex items-center space-x-2 text-gray-700 hover:text-yellow-500 font-semibold transition-colors duration-300 py-2 cursor-pointer"
                     onClick={(e) => {
                       if (item.dropdown) {
                         e.preventDefault()
@@ -296,6 +311,7 @@ const Navigation = () => {
                       </motion.div>
                     )}
                   </motion.a>
+
                   {/* Enhanced Dropdown Menu */}
                   {item.dropdown && (
                     <AnimatePresence>
@@ -305,7 +321,7 @@ const Navigation = () => {
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: 10, scale: 0.95 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-full left-0 mt-2 w-[600px] bg-white rounded-2xl shadow-2xl border border-gray-200 z-50"
+                          className="absolute top-full left-0 mt-2 w-[600px] bg-white rounded-2xl shadow-2xl border border-gray-200 z-[60]"
                           onMouseEnter={() => setIsDesktopDropdownOpen(true)}
                           onMouseLeave={() => setIsDesktopDropdownOpen(false)}
                         >
@@ -322,7 +338,7 @@ const Navigation = () => {
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ duration: 0.3, delay: dropdownIndex * 0.1 }}
                                     whileHover={{ scale: 1.02, x: 5 }}
-                                    className="group/item flex items-center space-x-3 p-4 rounded-xl hover:bg-gray-50 transition-all duration-200 border border-transparent hover:border-yellow-200 hover:shadow-lg"
+                                    className="group/item flex items-center space-x-3 p-4 rounded-xl hover:bg-gray-50 transition-all duration-200 border border-transparent hover:border-yellow-200 hover:shadow-lg cursor-pointer"
                                     onClick={() => {
                                       setActiveDropdown(null)
                                       setIsDesktopDropdownOpen(false)
@@ -346,13 +362,14 @@ const Navigation = () => {
                                 )
                               })}
                             </div>
+
                             {/* View All Services Button */}
                             <div className="pt-4 border-t border-gray-200">
                               <motion.a
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
                                 href="/services"
-                                className="flex items-center justify-center w-full py-3 px-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-bold rounded-xl hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 shadow-lg"
+                                className="flex items-center justify-center w-full py-3 px-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-bold rounded-xl hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 shadow-lg cursor-pointer"
                                 onClick={() => {
                                   setActiveDropdown(null)
                                   setIsDesktopDropdownOpen(false)
@@ -369,6 +386,7 @@ const Navigation = () => {
                 </div>
               ))}
             </motion.div>
+
             {/* Get Quote Button */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -376,16 +394,19 @@ const Navigation = () => {
               transition={{ duration: 0.6, delay: 0.8 }}
               className="hidden lg:block"
             >
-              <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-8 py-3 rounded-full font-bold hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 shadow-lg hover:shadow-xl"
-              >
-                Contact Us
-              </motion.button>
+              <Link href="/contact">
+                <motion.button
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-8 py-3 rounded-full font-bold hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer"
+                >
+                  Contact Us
+                </motion.button>
+              </Link>
             </motion.div>
           </div>
         </div>
+
         {/* Mobile Navigation Menu */}
         <AnimatePresence>
           {isMobileMenuOpen && (
@@ -394,7 +415,7 @@ const Navigation = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="lg:hidden border-t border-gray-200 bg-white overflow-hidden"
+              className="lg:hidden border-t border-gray-200 bg-white overflow-hidden relative z-[60]"
             >
               <motion.div
                 initial={{ y: -20 }}
@@ -423,6 +444,7 @@ const Navigation = () => {
                     )
                   })}
                 </motion.div>
+
                 {/* Mobile Navigation Links */}
                 {navItems.map((item, index) => (
                   <motion.div
@@ -435,7 +457,7 @@ const Navigation = () => {
                     <motion.a
                       whileTap={{ scale: 0.98 }}
                       href={item.href}
-                      className="flex items-center justify-between px-4 py-3 text-gray-700 hover:text-yellow-500 font-semibold rounded-lg hover:bg-gray-50 transition-all duration-300"
+                      className="flex items-center justify-between px-4 py-3 text-gray-700 hover:text-yellow-500 font-semibold rounded-lg hover:bg-gray-50 transition-all duration-300 cursor-pointer"
                       onClick={(e) => {
                         if (item.dropdown) {
                           e.preventDefault()
@@ -453,6 +475,7 @@ const Navigation = () => {
                         </motion.div>
                       )}
                     </motion.a>
+
                     {/* Enhanced Mobile Dropdown */}
                     <AnimatePresence>
                       {item.dropdown && activeDropdown === index && (
@@ -461,7 +484,7 @@ const Navigation = () => {
                           animate={{ opacity: 1, height: "auto" }}
                           exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.3 }}
-                          className="mt-3 space-y-3 border-l-2 border-yellow-400 pl-4 overflow-hidden"
+                          className="mt-3 space-y-3 border-l-2 border-yellow-400 pl-4 overflow-hidden bg-white relative z-[70]"
                         >
                           {item.dropdown.map((dropdownItem, dropdownIndex) => {
                             const IconComponent = dropdownItem.icon
@@ -472,7 +495,11 @@ const Navigation = () => {
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.2, delay: dropdownIndex * 0.05 }}
                                 href={dropdownItem.href}
-                                className="flex items-center space-x-3 p-3 text-gray-600 hover:text-yellow-500 hover:bg-gray-50 rounded-lg transition-all duration-200 group/mobile"
+                                className="flex items-center space-x-3 p-3 text-gray-600 hover:text-yellow-500 hover:bg-gray-50 rounded-lg transition-all duration-200 group/mobile cursor-pointer"
+                                onClick={() => {
+                                  setActiveDropdown(null)
+                                  setIsMobileMenuOpen(false)
+                                }}
                               >
                                 <motion.div
                                   whileHover={{ scale: 1.1 }}
@@ -490,20 +517,26 @@ const Navigation = () => {
                             )
                           })}
                           <div className="mt-3 pt-3 border-t border-gray-200">
-                            <motion.a
-                              whileHover={{ scale: 1.02 }}
-                              whileTap={{ scale: 0.98 }}
-                              href="/services"
-                              className="flex items-center justify-center w-full py-2 px-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-bold rounded-lg hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 text-sm"
-                            >
-                              View All Services
-                            </motion.a>
+                            <Link href="/services">
+                              <motion.button
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
+                                className="flex items-center justify-center w-full py-2 px-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-bold rounded-lg hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 text-sm cursor-pointer"
+                                onClick={() => {
+                                  setActiveDropdown(null)
+                                  setIsMobileMenuOpen(false)
+                                }}
+                              >
+                                View All Services
+                              </motion.button>
+                            </Link>
                           </div>
                         </motion.div>
                       )}
                     </AnimatePresence>
                   </motion.div>
                 ))}
+
                 {/* Mobile Social Media */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -522,13 +555,14 @@ const Navigation = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3, delay: 0.8 + index * 0.1 }}
-                        className={`w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 ${social.color} transition-all duration-300 shadow-sm`}
+                        className={`w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 ${social.color} transition-all duration-300 shadow-sm cursor-pointer`}
                       >
                         <IconComponent size={18} />
                       </motion.a>
                     )
                   })}
                 </motion.div>
+
                 {/* Mobile Get Quote Button */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -536,13 +570,16 @@ const Navigation = () => {
                   transition={{ duration: 0.3, delay: 0.9 }}
                   className="px-4 pt-4"
                 >
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-6 py-4 rounded-full font-bold hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 shadow-lg"
-                  >
-                    Contact Us
-                  </motion.button>
+                  <Link href="/contact">
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-6 py-4 rounded-full font-bold hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 shadow-lg cursor-pointer"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      Contact Us
+                    </motion.button>
+                  </Link>
                 </motion.div>
               </motion.div>
             </motion.div>
@@ -552,4 +589,5 @@ const Navigation = () => {
     </motion.nav>
   )
 }
+
 export default Navigation

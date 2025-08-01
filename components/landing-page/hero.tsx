@@ -61,7 +61,7 @@ const HeroSection = () => {
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
-      opacity: 1,
+      opacity: 50,
       y: 0,
       transition: {
         duration: 0.6,
@@ -82,7 +82,7 @@ const HeroSection = () => {
   return (
     <section className="relative bg-gradient-to-br from-gray-50 via-white to-blue-50 overflow-hidden">
       {/* Enhanced Animated Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 ">
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
@@ -184,25 +184,27 @@ const HeroSection = () => {
               across coffee shops, restaurants, construction, bars, and car rentals in Liberia.
             </motion.p>
 
-            {/* CTA Buttons */}
+            {/* CTA Buttons - FIXED VERSION */}
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4">
-              <Link href="/contact">
-              <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-8 py-4 rounded-full font-bold hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 shadow-lg cursor-pointer"
-              >
-                Get A Quote
-              </motion.button>
+              {/* Get A Quote Button */}
+              <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
+                <Link
+                  href="/contact"
+                  className="inline-block bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-8 py-4 rounded-full font-bold hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 shadow-lg cursor-pointer text-center"
+                >
+                  Get A Quote
                 </Link>
+              </motion.div>
 
-              <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 hover:border-gray-400 transition-all duration-300"
-              >
-                View Our Services
-              </motion.button>
+              {/* View Our Services Button */}
+              <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
+                <Link
+                  href="/services"
+                  className="inline-block border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 hover:border-gray-400 transition-all duration-300 cursor-pointer text-center"
+                >
+                  View Our Services
+                </Link>
+              </motion.div>
             </motion.div>
           </motion.div>
 
@@ -386,14 +388,16 @@ const HeroSection = () => {
                       <h4 className="font-bold text-gray-900 text-lg">Multi-Service Excellence</h4>
                       <p className="text-gray-600 text-sm">Transforming businesses across Liberia</p>
                     </div>
-                    <motion.button
-                      whileHover={{ scale: 1.05, x: 5 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="flex items-center space-x-2 bg-yellow-500 hover:bg-yellow-400 text-black px-4 py-2 rounded-full font-semibold transition-colors duration-300 shadow-lg"
-                    >
-                      <span className="text-sm">Explore</span>
-                      <ArrowRight size={16} />
-                    </motion.button>
+                    <Link href="/services">
+                      <motion.button
+                        whileHover={{ scale: 1.05, x: 5 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="flex items-center space-x-2 bg-yellow-500 hover:bg-yellow-400 text-black px-4 py-2 rounded-full font-semibold transition-colors duration-300 shadow-lg cursor-pointer"
+                      >
+                        <span className="text-sm">Explore</span>
+                        <ArrowRight size={16} />
+                      </motion.button>
+                    </Link>
                   </div>
                 </motion.div>
 

@@ -136,24 +136,12 @@
   }
 }
 
-body{
+html body{
   overflow-x: hidden;
 
 }
 
 
-.cli-path {
-  clip-path: polygon(
-    31% 9%,
-    73% 10%,
-    100% 0,
-    100% 100%,
-    74% 93%,
-    25% 94%,
-    0 100%,
-    0 0
-  );
-}
 
 
 /* Additional number-specific styles */
