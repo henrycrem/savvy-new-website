@@ -142,7 +142,7 @@ const Navigation = () => {
           >
             {[
               { icon: Phone, text: "(+231) 886-445-092" },
-              { icon: Mail, text: "hello@savvygroup.com" },
+              { icon: Mail, text: "info@savvygroup.com" },
               { icon: MapPin, text: "Monrovia, Liberia" },
             ].map((item, index) => {
               const IconComponent = item.icon
