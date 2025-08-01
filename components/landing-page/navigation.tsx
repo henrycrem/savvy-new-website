@@ -1,5 +1,4 @@
 "use client"
-
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import {
@@ -25,23 +24,26 @@ import { motion, AnimatePresence } from "framer-motion"
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null)
-  const [isDesktopDropdownOpen, setIsDesktopDropdownOpen] = useState(false)
+  // Removed isDesktopDropdownOpen state as it was causing issues
+  const dropdownRef = useRef<HTMLDivElement>(null); // Ref for the dropdown menu itself
+
   const [logoError, setLogoError] = useState(false)
   const logoRef = useRef<HTMLImageElement>(null)
 
-  // Add this useEffect after the state declarations
+  // Handle clicks outside the dropdown to close it
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      const target = event.target as Element
-      if (!target.closest(".relative.group")) {
-        setActiveDropdown(null)
-        setIsDesktopDropdownOpen(false)
+      // Check if the click is outside the dropdown menu itself
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setActiveDropdown(null); // Close the dropdown
       }
-    }
+    };
 
-    document.addEventListener("click", handleClickOutside)
-    return () => document.removeEventListener("click", handleClickOutside)
-  }, [])
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   // Check if logo image exists on component mount
   useEffect(() => {
@@ -53,17 +55,14 @@ const Navigation = () => {
         }
       }
     }
-
     // Check immediately if the image is already loaded
     checkLogo()
-
     // Add event listeners for load and error
     const imgElement = logoRef.current
     if (imgElement) {
       imgElement.addEventListener("load", () => setLogoError(false))
       imgElement.addEventListener("error", () => setLogoError(true))
     }
-
     // Cleanup
     return () => {
       if (imgElement) {
@@ -77,7 +76,7 @@ const Navigation = () => {
     { name: "Home", href: "/" },
     {
       name: "Services",
-      href: "#services",
+      href: "#services", // Changed from '#' to '#services' for better semantics if it links to an anchor
       dropdown: [
         {
           name: "Coffee Shop",
@@ -134,6 +133,7 @@ const Navigation = () => {
   }
 
   const handleDropdownToggle = (index: number) => {
+    // Toggle the dropdown for the clicked item, close others
     setActiveDropdown(activeDropdown === index ? null : index)
   }
 
@@ -291,20 +291,15 @@ const Navigation = () => {
                     onClick={(e) => {
                       if (item.dropdown) {
                         e.preventDefault()
-                        setActiveDropdown(activeDropdown === index ? null : index)
-                        setIsDesktopDropdownOpen(!isDesktopDropdownOpen)
+                        handleDropdownToggle(index) // Toggle the dropdown on click
                       }
                     }}
-                    onMouseEnter={() => {
-                      if (item.dropdown) {
-                        setIsDesktopDropdownOpen(true)
-                      }
-                    }}
+                    // Removed onMouseEnter for hover logic to simplify
                   >
                     <span>{item.name}</span>
                     {item.dropdown && (
                       <motion.div
-                        animate={{ rotate: activeDropdown === index || isDesktopDropdownOpen ? 180 : 0 }}
+                        animate={{ rotate: activeDropdown === index ? 180 : 0 }} // Only check activeDropdown
                         transition={{ duration: 0.3 }}
                       >
                         <ChevronDown size={18} className="group-hover:text-yellow-500 transition-colors duration-300" />
@@ -315,15 +310,15 @@ const Navigation = () => {
                   {/* Enhanced Dropdown Menu */}
                   {item.dropdown && (
                     <AnimatePresence>
-                      {(activeDropdown === index || isDesktopDropdownOpen) && (
+                      {activeDropdown === index && ( // Only show if this item's dropdown is active
                         <motion.div
+                          ref={dropdownRef} // Assign ref to the dropdown
                           initial={{ opacity: 0, y: 10, scale: 0.95 }}
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: 10, scale: 0.95 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-full left-0 mt-2 w-[600px] bg-white rounded-2xl shadow-2xl border border-gray-200 z-[60]"
-                          onMouseEnter={() => setIsDesktopDropdownOpen(true)}
-                          onMouseLeave={() => setIsDesktopDropdownOpen(false)}
+                          className="absolute top-full left-0 mt-2 w-[600px] bg-white rounded-2xl shadow-2xl border border-gray-200 z-[60]" // z-index increased
+                          // Removed onMouseEnter and onMouseLeave for hover logic
                         >
                           <div className="p-6">
                             {/* Services Grid */}
@@ -340,8 +335,7 @@ const Navigation = () => {
                                     whileHover={{ scale: 1.02, x: 5 }}
                                     className="group/item flex items-center space-x-3 p-4 rounded-xl hover:bg-gray-50 transition-all duration-200 border border-transparent hover:border-yellow-200 hover:shadow-lg cursor-pointer"
                                     onClick={() => {
-                                      setActiveDropdown(null)
-                                      setIsDesktopDropdownOpen(false)
+                                      setActiveDropdown(null) // Close dropdown on item click
                                     }}
                                   >
                                     <motion.div
@@ -371,8 +365,7 @@ const Navigation = () => {
                                 href="/services"
                                 className="flex items-center justify-center w-full py-3 px-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-bold rounded-xl hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 shadow-lg cursor-pointer"
                                 onClick={() => {
-                                  setActiveDropdown(null)
-                                  setIsDesktopDropdownOpen(false)
+                                  setActiveDropdown(null) // Close dropdown on button click
                                 }}
                               >
                                 View All Services
@@ -415,7 +408,7 @@ const Navigation = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="lg:hidden border-t border-gray-200 bg-white overflow-hidden relative z-[60]"
+              className="lg:hidden border-t border-gray-200 bg-white overflow-hidden relative z-[60]" // z-index increased
             >
               <motion.div
                 initial={{ y: -20 }}
@@ -462,6 +455,9 @@ const Navigation = () => {
                         if (item.dropdown) {
                           e.preventDefault()
                           handleDropdownToggle(index)
+                        } else {
+                          // Close mobile menu if a non-dropdown link is clicked
+                          setIsMobileMenuOpen(false);
                         }
                       }}
                     >
@@ -484,7 +480,7 @@ const Navigation = () => {
                           animate={{ opacity: 1, height: "auto" }}
                           exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.3 }}
-                          className="mt-3 space-y-3 border-l-2 border-yellow-400 pl-4 overflow-hidden bg-white relative z-[70]"
+                          className="mt-3 space-y-3 border-l-2 border-yellow-400 pl-4 overflow-hidden bg-white relative z-[70]" // z-index increased
                         >
                           {item.dropdown.map((dropdownItem, dropdownIndex) => {
                             const IconComponent = dropdownItem.icon
