@@ -179,7 +179,7 @@ const HeroSection = () => {
             </motion.div>
 
             {/* Description */}
-            <motion.p variants={itemVariants} className="text-gray-600 text-lg leading-relaxed max-w-lg">
+            <motion.p variants={itemVariants} className="text-gray-600 text-lg leading-relaxed max-w-lg text-justify">
               Transform your business with our comprehensive multi-service solutions. We deliver exceptional quality
               across coffee shops, restaurants, construction, bars, and car rentals in Liberia.
             </motion.p>

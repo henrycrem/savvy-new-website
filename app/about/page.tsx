@@ -3,7 +3,7 @@ import React from 'react'
 
 const AboutSection = () => {
   return (
-    <div>
+    <div className='mt-32'> 
         <AboutPage/>
     </div>
   )

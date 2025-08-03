@@ -151,7 +151,7 @@ const vehicleTypes = [
 
 export default function CarRentalPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 mt-32">
       
 
       {/* Hero Section */}

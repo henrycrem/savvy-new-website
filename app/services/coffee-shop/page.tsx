@@ -5,99 +5,99 @@ import { Coffee, Clock, Users, Palette, ShoppingCart, TrendingUp, CheckCircle, S
 
 const features = [
   {
-    icon: Palette,
-    title: "Custom Interior Design",
+    icon: Coffee,
+    title: "Premium Coffee & Beverages",
     description:
-      "Unique, Instagram-worthy spaces that reflect your brand and create the perfect ambiance for your customers.",
+      "High-quality coffee, teas, and specialty drinks served in a welcoming atmosphere for customers to enjoy.",
   },
   {
-    icon: Coffee,
-    title: "Premium Coffee Sourcing",
-    description:
-      "Direct relationships with coffee farmers worldwide, ensuring the highest quality beans and unique blends.",
+    icon: Palette,
+    title: "Cozy Interior Design",
+    description: "Comfortable seating areas and inviting ambiance perfect for relaxation, work, or socializing.",
   },
   {
     icon: Users,
-    title: "Barista Training Programs",
-    description:
-      "Comprehensive training programs that turn your staff into coffee artisans and customer service experts.",
+    title: "Customer Experience",
+    description: "Friendly service and a warm environment where customers feel at home while enjoying their beverages.",
   },
   {
     icon: ShoppingCart,
-    title: "POS & Inventory Systems",
-    description: "Modern point-of-sale systems with real-time inventory tracking and detailed analytics.",
+    title: "Fresh Pastries & Snacks",
+    description: "Delicious pastries, sandwiches, and light snacks to complement your coffee experience.",
   },
   {
     icon: TrendingUp,
-    title: "Marketing & Branding",
-    description: "Complete brand development and marketing strategies to build a loyal customer base.",
+    title: "Community Hub",
+    description: "A gathering place for the community to meet, work, and connect over great coffee.",
   },
   {
     icon: Clock,
-    title: "Operational Efficiency",
-    description: "Streamlined workflows and processes that maximize productivity and minimize wait times.",
+    title: "Convenient Hours",
+    description: "Extended operating hours to serve customers throughout the day.",
   },
 ]
 
 const services = [
   {
-    title: "Concept Development",
-    description:
-      "From initial idea to detailed business plan, we help you define your coffee shop's unique identity and market position.",
+    title: "Coffee & Beverages",
+    description: "We serve a wide variety of premium coffee drinks, teas, and specialty beverages crafted with care.",
     items: [
-      "Market research & analysis",
-      "Concept design & theme development",
-      "Business plan creation",
-      "Financial projections",
+      "Freshly brewed coffee varieties",
+      "Espresso-based drinks (lattes, cappuccinos)",
+      "Hot and iced tea selections",
+      "Specialty seasonal beverages",
     ],
   },
   {
-    title: "Design & Setup",
-    description: "Complete interior design and equipment setup to create the perfect coffee shop environment.",
+    title: "Food & Snacks",
+    description: "Complement your drinks with our selection of fresh pastries, sandwiches, and light meals.",
     items: [
-      "Interior design & layout",
-      "Equipment selection & installation",
-      "Furniture & décor sourcing",
-      "Lighting & ambiance design",
+      "Fresh pastries and baked goods",
+      "Sandwiches and wraps",
+      "Light breakfast options",
+      "Healthy snack alternatives",
     ],
   },
   {
-    title: "Operations Management",
-    description: "Day-to-day operational support to ensure smooth running and consistent quality.",
+    title: "Atmosphere & Seating",
+    description: "Comfortable spaces designed for various needs - from quick coffee breaks to extended stays.",
     items: [
-      "Staff recruitment & training",
-      "Inventory management",
-      "Quality control systems",
-      "Customer service protocols",
+      "Comfortable seating arrangements",
+      "Free Wi-Fi for customers",
+      "Quiet areas for work/study",
+      "Social spaces for gatherings",
     ],
   },
   {
-    title: "Marketing & Growth",
-    description: "Strategic marketing initiatives to build brand awareness and drive customer loyalty.",
-    items: ["Brand identity development", "Social media marketing", "Loyalty programs", "Community engagement"],
+    title: "Customer Service",
+    description: "Exceptional service ensuring every customer has a memorable coffee shop experience.",
+    items: [
+      "Friendly and knowledgeable staff",
+      "Quick and efficient service",
+      "Custom drink preparations",
+      "Regular customer recognition",
+    ],
   },
 ]
 
 const testimonials = [
   {
     name: "Sarah Johnson",
-    business: "Brew & Beans Café",
+    business: "Regular Customer",
     quote:
-      "Savvy Group transformed my coffee shop dream into reality. Their attention to detail and expertise in every aspect of the business was incredible.",
+      "This is my go-to coffee shop! The atmosphere is perfect for working, and the coffee is always fresh and delicious.",
     rating: 5,
   },
   {
     name: "Michael Chen",
-    business: "Urban Grind",
-    quote:
-      "The barista training program they provided was exceptional. My staff now creates coffee art that customers love to share on social media.",
+    business: "Local Resident",
+    quote: "Great place to meet friends and relax. The staff is always friendly and the pastries are amazing!",
     rating: 5,
   },
   {
     name: "Emma Williams",
-    business: "Corner Coffee Co.",
-    quote:
-      "From design to operations, Savvy Group handled everything. We've been profitable since month three thanks to their strategic approach.",
+    business: "Student",
+    quote: "Perfect study spot with excellent Wi-Fi and comfortable seating. The coffee keeps me energized for hours.",
     rating: 5,
   },
 ]
@@ -105,31 +105,31 @@ const testimonials = [
 const process = [
   {
     step: "01",
-    title: "Consultation & Planning",
+    title: "Welcome & Order",
     description:
-      "We start with a comprehensive consultation to understand your vision, budget, and goals for your coffee shop.",
+      "Our friendly staff welcomes you and helps you choose from our extensive menu of beverages and snacks.",
   },
   {
     step: "02",
-    title: "Design & Development",
-    description: "Our team creates detailed designs and develops your brand identity, menu, and operational systems.",
+    title: "Fresh Preparation",
+    description: "Each drink is carefully prepared using premium ingredients and expert techniques.",
   },
   {
     step: "03",
-    title: "Setup & Installation",
-    description: "We handle all aspects of setup, from interior design to equipment installation and staff training.",
+    title: "Comfortable Experience",
+    description: "Enjoy your order in our comfortable seating areas designed for relaxation and productivity.",
   },
   {
     step: "04",
-    title: "Launch & Support",
-    description: "Grand opening support and ongoing operational guidance to ensure your coffee shop's success.",
+    title: "Community Connection",
+    description: "Become part of our coffee community where regulars are family and new faces become friends.",
   },
 ]
 
 export default function CoffeeShopPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      
+    <div className="min-h-screen bg-gray-50 mt-32">
+
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-amber-600 via-orange-500 to-amber-700 text-white py-24 overflow-hidden">
@@ -151,26 +151,27 @@ export default function CoffeeShopPage() {
                 </div>
                 <div>
                   <h1 className="text-5xl font-bold mb-2">Coffee Shop</h1>
-                  <p className="text-xl text-white/90">Management Services</p>
+                  <p className="text-xl text-white/90">Your Community Coffee Destination</p>
                 </div>
               </div>
               <p className="text-xl text-white/90 mb-8 leading-relaxed">
-                Transform your coffee shop vision into a thriving business with our comprehensive management services.
-                From concept to cup, we handle every detail to ensure your success in the competitive coffee industry.
+                Welcome to our cozy coffee shop where premium beverages meet community spirit. Enjoy freshly brewed
+                coffee, delicious pastries, and a warm atmosphere perfect for work, relaxation, or catching up with
+                friends.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button className="bg-white text-amber-600 px-8 py-4 rounded-full font-bold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-xl">
-                  Start Your Project
+                  Visit Our Shop
                 </button>
                 <button className="border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-amber-600 transition-all duration-300">
-                  View Portfolio
+                  View Menu
                 </button>
               </div>
             </div>
             <div className="relative">
               <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
                 <img
-                  src="/placeholder.svg?height=400&width=500&text=Premium+Coffee+Shop+Interior"
+                  src="/placeholder.svg?height=400&width=500&text=Cozy+Coffee+Shop+Interior"
                   alt="Coffee Shop Interior"
                   className="w-full h-80 object-cover rounded-2xl shadow-lg"
                 />
@@ -188,11 +189,11 @@ export default function CoffeeShopPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Why Choose Our <span className="text-amber-600">Coffee Shop Services</span>
+              Why Choose Our <span className="text-amber-600">Coffee Shop</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We provide end-to-end solutions that cover every aspect of coffee shop management, ensuring your business
-              thrives from day one.
+              More than just coffee - we're your neighborhood gathering place offering quality beverages, delicious
+              food, and a welcoming atmosphere.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -220,10 +221,10 @@ export default function CoffeeShopPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Our <span className="text-amber-600">Service Areas</span>
+              What We <span className="text-amber-600">Offer</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Comprehensive coffee shop management covering every aspect of your business operations.
+              From premium coffee to comfortable spaces, everything you need for the perfect coffee shop experience.
             </p>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -253,10 +254,10 @@ export default function CoffeeShopPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Our <span className="text-amber-600">Process</span>
+              Your Coffee Shop <span className="text-amber-600">Experience</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              A proven 4-step process that takes your coffee shop from concept to successful operation.
+              From the moment you walk in to the last sip, we ensure every visit is memorable.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -283,10 +284,10 @@ export default function CoffeeShopPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Client <span className="text-amber-600">Success Stories</span>
+              What Our <span className="text-amber-600">Customers Say</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Hear from coffee shop owners who have transformed their businesses with our expert guidance.
+              Hear from our valued customers who make our coffee shop a vibrant community hub.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -315,17 +316,17 @@ export default function CoffeeShopPage() {
       <section className="bg-gradient-to-r from-amber-600 to-orange-500 text-white py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Coffee className="w-16 h-16 mx-auto mb-6 text-white/90" />
-          <h2 className="text-4xl font-bold mb-6">Ready to Brew Success?</h2>
+          <h2 className="text-4xl font-bold mb-6">Ready for Great Coffee?</h2>
           <p className="text-xl text-white/90 mb-8">
-            Let's transform your coffee shop vision into a thriving business that serves exceptional experiences, one
-            cup at a time.
+            Visit us today and discover why we're the community's favorite coffee destination. Great coffee, delicious
+            food, and warm hospitality await you.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="bg-white text-amber-600 px-8 py-4 rounded-full font-bold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-xl text-lg">
-              Start Your Coffee Shop
+              Visit Our Coffee Shop
             </button>
             <button className="border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-amber-600 transition-all duration-300 text-lg">
-              Schedule Consultation
+              View Our Menu
             </button>
           </div>
         </div>

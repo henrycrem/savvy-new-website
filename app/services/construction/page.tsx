@@ -166,11 +166,11 @@ const projectTypes = [
 
 export default function ConstructionPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 mt-32">
   
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-600 via-cyan-500 to-blue-700 text-white py-24 overflow-hidden">
+      <section className=" relative bg-gradient-to-br from-blue-600 via-cyan-500 to-blue-700 text-white py-24 overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full animate-pulse"></div>
           <div className="absolute top-40 right-20 w-16 h-16 bg-white/10 rounded-full animate-bounce delay-300"></div>

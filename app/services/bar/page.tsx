@@ -1,80 +1,74 @@
 "use client"
 
-
-import { Wine, Music, Users, ShieldCheck, CheckCircle, Star, Award, Palette, Crown } from "lucide-react"
+import { Wine, Music, Users, ShieldCheck, CheckCircle, Star, Award, Palette, Crown, Volume2 } from "lucide-react"
 
 const features = [
   {
-    icon: Palette,
-    title: "Sophisticated Interior Design",
-    description: "Upscale interior design creating the perfect ambiance for memorable nightlife experiences.",
-  },
-  {
     icon: Wine,
-    title: "Premium Beverage Curation",
-    description: "Expertly curated wine lists, craft cocktails, and premium spirits selection.",
-  },
-  {
-    icon: Users,
-    title: "Professional Staff Training",
-    description: "Comprehensive bartender and service staff training for exceptional customer experiences.",
+    title: "Premium Beverages",
+    description: "Wide selection of alcoholic and non-alcoholic drinks including wines, beers, cocktails, and spirits.",
   },
   {
     icon: Music,
-    title: "Entertainment Systems",
-    description: "State-of-the-art sound systems, lighting, and entertainment setup for perfect atmosphere.",
+    title: "Live Entertainment",
+    description: "Regular live music performances, DJ sets, and entertainment events to enhance your experience.",
   },
   {
-    icon: Crown,
-    title: "VIP Services",
-    description: "Exclusive VIP areas and premium service offerings for discerning clientele.",
+    icon: Users,
+    title: "Social Atmosphere",
+    description: "Perfect place to unwind, socialize with friends, and meet new people in a relaxed environment.",
+  },
+  {
+    icon: Palette,
+    title: "Stylish Ambiance",
+    description: "Beautifully designed interior with comfortable seating and mood lighting for the perfect atmosphere.",
+  },
+  {
+    icon: Volume2,
+    title: "Quality Sound System",
+    description: "Professional audio equipment ensuring crystal clear sound for music and entertainment.",
   },
   {
     icon: ShieldCheck,
-    title: "Compliance & Safety",
-    description: "Complete licensing, safety protocols, and regulatory compliance management.",
+    title: "Safe Environment",
+    description: "Secure and well-managed venue with professional staff ensuring customer safety and comfort.",
   },
 ]
 
 const services = [
   {
-    title: "Concept & Design",
-    description: "Create unique bar and lounge concepts that stand out in the competitive nightlife market.",
+    title: "Beverage Selection",
+    description: "Extensive drink menu featuring premium alcoholic beverages and refreshing non-alcoholic options.",
     items: [
-      "Theme development & branding",
-      "Interior design & layout planning",
-      "Lighting & ambiance design",
-      "Furniture & décor selection",
+      "Premium wines and champagnes",
+      "Craft beers and imported brands",
+      "Signature cocktails and mixed drinks",
+      "Soft drinks and fresh juices",
     ],
   },
   {
-    title: "Beverage Program",
-    description: "Develop comprehensive beverage programs that maximize profitability and customer satisfaction.",
+    title: "Entertainment & Events",
+    description: "Regular entertainment programming to keep the atmosphere lively and engaging.",
+    items: ["Live music performances", "DJ nights and dance music", "Karaoke sessions", "Special event hosting"],
+  },
+  {
+    title: "Lounge Experience",
+    description: "Comfortable and stylish environment perfect for relaxation and socializing.",
     items: [
-      "Cocktail menu development",
-      "Wine & spirits selection",
-      "Bartender training programs",
-      "Inventory management systems",
+      "Comfortable seating areas",
+      "VIP sections available",
+      "Mood lighting and ambiance",
+      "Air-conditioned comfort",
     ],
   },
   {
-    title: "Operations Management",
-    description: "Complete operational oversight ensuring smooth daily operations and exceptional service standards.",
+    title: "Customer Service",
+    description: "Professional staff dedicated to providing excellent service and ensuring customer satisfaction.",
     items: [
-      "Staff recruitment & training",
-      "Service protocols & standards",
-      "Security & safety management",
-      "Event planning & coordination",
-    ],
-  },
-  {
-    title: "Marketing & Events",
-    description: "Strategic marketing and event programming to build a loyal customer base and drive revenue.",
-    items: [
-      "Brand development & marketing",
-      "Social media & digital presence",
-      "Special events & promotions",
-      "VIP programs & memberships",
+      "Experienced bartenders",
+      "Friendly and attentive service",
+      "Custom drink preparations",
+      "Event planning assistance",
     ],
   },
 ]
@@ -82,23 +76,23 @@ const services = [
 const testimonials = [
   {
     name: "Alexandra Thompson",
-    business: "Skyline Lounge",
+    business: "Regular Customer",
     quote:
-      "Savvy Group transformed our vision into the city's premier nightlife destination. The sophisticated design and operational excellence are outstanding.",
+      "Great place to unwind after work! The atmosphere is perfect, drinks are excellent, and the live music makes it even better.",
     rating: 5,
   },
   {
     name: "Marcus Johnson",
-    business: "The Vault Bar",
+    business: "Event Organizer",
     quote:
-      "From concept to opening night, their expertise in every aspect of bar management was evident. We've been packed every weekend since launch.",
+      "Hosted my birthday party here and it was amazing! The staff was professional and the entertainment was top-notch.",
     rating: 5,
   },
   {
     name: "Isabella Rodriguez",
-    business: "Moonlight Lounge",
+    business: "Local Resident",
     quote:
-      "The beverage program and staff training they provided elevated our establishment to fine dining standards. Customer satisfaction is at an all-time high.",
+      "My favorite spot for weekend relaxation. The cocktails are creative and the environment is always welcoming and fun.",
     rating: 5,
   },
 ]
@@ -106,53 +100,53 @@ const testimonials = [
 const process = [
   {
     step: "01",
-    title: "Concept Development",
-    description: "Define your unique bar concept, target audience, and competitive positioning in the market.",
+    title: "Welcome & Seating",
+    description: "Our friendly staff welcomes you and helps you find the perfect spot to enjoy your evening.",
   },
   {
     step: "02",
-    title: "Design & Setup",
-    description: "Complete interior design, equipment installation, and atmosphere creation for your venue.",
+    title: "Drink Selection",
+    description: "Browse our extensive menu and let our skilled bartenders craft the perfect drink for you.",
   },
   {
     step: "03",
-    title: "Program Development",
-    description: "Beverage menu creation, staff training, and operational system implementation.",
+    title: "Relax & Enjoy",
+    description: "Settle in, enjoy your beverages, and soak in the atmosphere with friends or make new ones.",
   },
   {
     step: "04",
-    title: "Launch & Growth",
-    description: "Grand opening support and ongoing marketing to establish your bar as a premier destination.",
+    title: "Entertainment",
+    description: "Experience live music, DJ sets, or other entertainment while enjoying great drinks and company.",
   },
 ]
 
 const barTypes = [
   {
     icon: Wine,
-    title: "Wine Bars",
-    description: "Sophisticated wine bars with curated selections and elegant atmospheres.",
+    title: "Premium Bar",
+    description: "High-quality alcoholic beverages and expertly crafted cocktails.",
   },
   {
     icon: Crown,
-    title: "Upscale Lounges",
-    description: "Premium lounges offering VIP experiences and exclusive service.",
+    title: "VIP Lounge",
+    description: "Exclusive seating areas for a more private and upscale experience.",
   },
   {
     icon: Music,
-    title: "Entertainment Venues",
-    description: "Bars with live music, DJ sets, and interactive entertainment.",
+    title: "Entertainment Hub",
+    description: "Live music, DJ performances, and special entertainment events.",
   },
   {
     icon: Users,
-    title: "Social Bars",
-    description: "Community-focused bars perfect for socializing and networking.",
+    title: "Social Space",
+    description: "Perfect environment for socializing, networking, and meeting people.",
   },
 ]
 
 export default function BarPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
- 
+    <div className="min-h-screen bg-gray-50 mt-32">
+   
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-purple-600 via-indigo-500 to-purple-700 text-white py-24 overflow-hidden">
@@ -174,26 +168,26 @@ export default function BarPage() {
                 </div>
                 <div>
                   <h1 className="text-5xl font-bold mb-2">Bar & Lounge</h1>
-                  <p className="text-xl text-white/90">Management Services</p>
+                  <p className="text-xl text-white/90">Relax, Drink & Enjoy</p>
                 </div>
               </div>
               <p className="text-xl text-white/90 mb-8 leading-relaxed">
-                Create sophisticated nightlife experiences with our comprehensive bar and lounge management services.
-                From upscale wine bars to premium lounges, we craft venues that become the talk of the town.
+                Unwind and socialize at our stylish bar and lounge. Enjoy premium beverages, live entertainment, and a
+                welcoming atmosphere perfect for relaxation and good times with friends.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button className="bg-white text-purple-600 px-8 py-4 rounded-full font-bold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-xl">
-                  Create Your Venue
+                  Visit Our Bar
                 </button>
                 <button className="border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-purple-600 transition-all duration-300">
-                  View Our Venues
+                  View Events
                 </button>
               </div>
             </div>
             <div className="relative">
               <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
                 <img
-                  src="/placeholder.svg?height=400&width=500&text=Upscale+Bar+Interior"
+                  src="/placeholder.svg?height=400&width=500&text=Stylish+Bar+Interior"
                   alt="Bar Interior"
                   className="w-full h-80 object-cover rounded-2xl shadow-lg"
                 />
@@ -206,15 +200,15 @@ export default function BarPage() {
         </div>
       </section>
 
-      {/* Bar Types */}
+      {/* Bar Features */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Bar & Lounge <span className="text-purple-600">Specialties</span>
+              What We <span className="text-purple-600">Offer</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We create diverse nightlife experiences, from intimate wine bars to high-energy entertainment venues.
+              From premium drinks to live entertainment, we provide everything you need for a perfect night out.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -239,10 +233,11 @@ export default function BarPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Premium <span className="text-purple-600">Bar Services</span>
+              Why Choose Our <span className="text-purple-600">Bar & Lounge</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Every element of bar and lounge management designed to create unforgettable nightlife experiences.
+              Experience the perfect combination of great drinks, entertainment, and atmosphere for unforgettable
+              nights.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -270,10 +265,10 @@ export default function BarPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Our <span className="text-purple-600">Service Areas</span>
+              Our <span className="text-purple-600">Services</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Comprehensive bar and lounge management covering every aspect of nightlife venue operations.
+              Everything you need for a great night out, from premium drinks to live entertainment.
             </p>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -303,10 +298,10 @@ export default function BarPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Our <span className="text-purple-600">Process</span>
+              Your <span className="text-purple-600">Experience</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              A refined approach that transforms bar concepts into premier nightlife destinations.
+              From arrival to last call, we ensure every moment of your visit is enjoyable and memorable.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -333,10 +328,10 @@ export default function BarPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Venue <span className="text-purple-600">Success Stories</span>
+              Customer <span className="text-purple-600">Reviews</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Discover how we've helped create some of the most sought-after nightlife destinations in the region.
+              See what our customers say about their experiences at our bar and lounge.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -365,17 +360,17 @@ export default function BarPage() {
       <section className="bg-gradient-to-r from-purple-600 to-indigo-500 text-white py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Wine className="w-16 h-16 mx-auto mb-6 text-white/90" />
-          <h2 className="text-4xl font-bold mb-6">Ready to Create the Ultimate Nightlife Experience?</h2>
+          <h2 className="text-4xl font-bold mb-6">Ready to Unwind?</h2>
           <p className="text-xl text-white/90 mb-8">
-            Let's transform your bar or lounge concept into the premier destination where memories are made and stories
-            begin.
+            Join us for great drinks, live entertainment, and an unforgettable night out. Your perfect evening of
+            relaxation and fun awaits!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="bg-white text-purple-600 px-8 py-4 rounded-full font-bold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-xl text-lg">
-              Launch Your Venue
+              Visit Tonight
             </button>
             <button className="border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-purple-600 transition-all duration-300 text-lg">
-              Schedule Consultation
+              Check Events
             </button>
           </div>
         </div>

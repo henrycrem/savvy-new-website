@@ -24,46 +24,52 @@ import { motion, AnimatePresence } from "framer-motion"
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null)
-  // Removed isDesktopDropdownOpen state as it was causing issues
-  const dropdownRef = useRef<HTMLDivElement>(null); // Ref for the dropdown menu itself
+  const [isScrolled, setIsScrolled] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
 
   const [logoError, setLogoError] = useState(false)
   const logoRef = useRef<HTMLImageElement>(null)
 
+  // Handle scroll to add background and shadow when scrolling
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY
+      setIsScrolled(scrollTop > 20)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
   // Handle clicks outside the dropdown to close it
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      // Check if the click is outside the dropdown menu itself
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setActiveDropdown(null); // Close the dropdown
+        setActiveDropdown(null)
       }
-    };
+    }
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside)
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [])
 
   // Check if logo image exists on component mount
   useEffect(() => {
     const checkLogo = () => {
       if (logoRef.current && logoRef.current.complete) {
-        // If image was already loaded (e.g., from cache) but failed
         if (logoRef.current.naturalWidth === 0) {
           setLogoError(true)
         }
       }
     }
-    // Check immediately if the image is already loaded
     checkLogo()
-    // Add event listeners for load and error
     const imgElement = logoRef.current
     if (imgElement) {
       imgElement.addEventListener("load", () => setLogoError(false))
       imgElement.addEventListener("error", () => setLogoError(true))
     }
-    // Cleanup
     return () => {
       if (imgElement) {
         imgElement.removeEventListener("load", () => setLogoError(false))
@@ -76,7 +82,7 @@ const Navigation = () => {
     { name: "Home", href: "/" },
     {
       name: "Services",
-      href: "#services", // Changed from '#' to '#services' for better semantics if it links to an anchor
+      href: "#services",
       dropdown: [
         {
           name: "Coffee Shop",
@@ -133,7 +139,6 @@ const Navigation = () => {
   }
 
   const handleDropdownToggle = (index: number) => {
-    // Toggle the dropdown for the clicked item, close others
     setActiveDropdown(activeDropdown === index ? null : index)
   }
 
@@ -142,7 +147,11 @@ const Navigation = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="sticky top-0 z-50 bg-white shadow-lg border-b border-gray-200 transition-all duration-300"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled 
+          ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200" 
+          : "bg-white shadow-lg border-b border-gray-200"
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
@@ -159,7 +168,6 @@ const Navigation = () => {
                 whileTap={{ scale: 0.95 }}
                 className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-lg flex items-center justify-center shadow-lg transition-transform duration-300 cursor-pointer"
               >
-                {/* Use image with fallback to SG text */}
                 {!logoError ? (
                   <img
                     ref={logoRef}
@@ -181,7 +189,7 @@ const Navigation = () => {
             </Link>
           </motion.div>
 
-          {/* Contact Info */}
+          {/* Contact Info - Hidden on smaller screens */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -210,7 +218,7 @@ const Navigation = () => {
             })}
           </motion.div>
 
-          {/* Social Media Icons */}
+          {/* Social Media Icons - Hidden on mobile */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -275,54 +283,52 @@ const Navigation = () => {
         {/* Navigation Menu */}
         <div className="border-t border-gray-200">
           <div className="flex items-center justify-between py-4">
-            {/* Desktop Navigation */}
+            {/* Navigation Links - Now visible on all screen sizes */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="hidden lg:flex items-center space-x-10"
+              className="flex items-center space-x-4 md:space-x-6 lg:space-x-10"
             >
               {navItems.map((item, index) => (
                 <div key={item.name} className="relative group">
                   <motion.a
                     whileHover={{ y: -2 }}
                     href={item.href}
-                    className="flex items-center space-x-2 text-gray-700 hover:text-yellow-500 font-semibold transition-colors duration-300 py-2 cursor-pointer"
+                    className="flex items-center space-x-1 md:space-x-2 text-gray-700 hover:text-yellow-500 font-semibold transition-colors duration-300 py-2 cursor-pointer text-sm md:text-base"
                     onClick={(e) => {
                       if (item.dropdown) {
                         e.preventDefault()
-                        handleDropdownToggle(index) // Toggle the dropdown on click
+                        handleDropdownToggle(index)
                       }
                     }}
-                    // Removed onMouseEnter for hover logic to simplify
                   >
                     <span>{item.name}</span>
                     {item.dropdown && (
                       <motion.div
-                        animate={{ rotate: activeDropdown === index ? 180 : 0 }} // Only check activeDropdown
+                        animate={{ rotate: activeDropdown === index ? 180 : 0 }}
                         transition={{ duration: 0.3 }}
                       >
-                        <ChevronDown size={18} className="group-hover:text-yellow-500 transition-colors duration-300" />
+                        <ChevronDown size={16} className="group-hover:text-yellow-500 transition-colors duration-300 md:w-5 md:h-5" />
                       </motion.div>
                     )}
                   </motion.a>
 
-                  {/* Enhanced Dropdown Menu */}
+                  {/* Services Dropdown - Now visible on all screen sizes */}
                   {item.dropdown && (
                     <AnimatePresence>
-                      {activeDropdown === index && ( // Only show if this item's dropdown is active
+                      {activeDropdown === index && (
                         <motion.div
-                          ref={dropdownRef} // Assign ref to the dropdown
+                          ref={dropdownRef}
                           initial={{ opacity: 0, y: 10, scale: 0.95 }}
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: 10, scale: 0.95 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-full left-0 mt-2 w-[600px] bg-white rounded-2xl shadow-2xl border border-gray-200 z-[60]" // z-index increased
-                          // Removed onMouseEnter and onMouseLeave for hover logic
+                          className="absolute top-full left-0 mt-2 w-[280px] sm:w-[400px] md:w-[500px] lg:w-[600px] bg-white rounded-2xl shadow-2xl border border-gray-200 z-[60]"
                         >
-                          <div className="p-6">
+                          <div className="p-4 lg:p-6">
                             {/* Services Grid */}
-                            <div className="grid grid-cols-2 gap-4 mb-6">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-4 mb-4 lg:mb-6">
                               {item.dropdown.map((dropdownItem, dropdownIndex) => {
                                 const IconComponent = dropdownItem.icon
                                 return (
@@ -333,22 +339,22 @@ const Navigation = () => {
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ duration: 0.3, delay: dropdownIndex * 0.1 }}
                                     whileHover={{ scale: 1.02, x: 5 }}
-                                    className="group/item flex items-center space-x-3 p-4 rounded-xl hover:bg-gray-50 transition-all duration-200 border border-transparent hover:border-yellow-200 hover:shadow-lg cursor-pointer"
+                                    className="group/item flex items-center space-x-3 p-3 lg:p-4 rounded-xl hover:bg-gray-50 transition-all duration-200 border border-transparent hover:border-yellow-200 hover:shadow-lg cursor-pointer"
                                     onClick={() => {
-                                      setActiveDropdown(null) // Close dropdown on item click
+                                      setActiveDropdown(null)
                                     }}
                                   >
                                     <motion.div
                                       whileHover={{ scale: 1.1, rotate: 5 }}
-                                      className={`w-10 h-10 bg-gradient-to-r ${dropdownItem.color} rounded-lg flex items-center justify-center shadow-lg flex-shrink-0`}
+                                      className={`w-8 h-8 lg:w-10 lg:h-10 bg-gradient-to-r ${dropdownItem.color} rounded-lg flex items-center justify-center shadow-lg flex-shrink-0`}
                                     >
-                                      <IconComponent className="w-5 h-5 text-white" />
+                                      <IconComponent className="w-4 h-4 lg:w-5 lg:h-5 text-white" />
                                     </motion.div>
                                     <div className="flex-1 min-w-0">
-                                      <h3 className="font-bold text-gray-900 group-hover/item:text-black transition-colors duration-200 text-sm">
+                                      <h3 className="font-bold text-gray-900 group-hover/item:text-black transition-colors duration-200 text-xs lg:text-sm">
                                         {dropdownItem.name}
                                       </h3>
-                                      <p className="text-xs text-gray-600 mt-1 group-hover/item:text-gray-700 transition-colors duration-200 line-clamp-2">
+                                      <p className="text-xs text-gray-600 mt-1 group-hover/item:text-gray-700 transition-colors duration-200 line-clamp-2 hidden sm:block">
                                         {dropdownItem.description}
                                       </p>
                                     </div>
@@ -358,14 +364,14 @@ const Navigation = () => {
                             </div>
 
                             {/* View All Services Button */}
-                            <div className="pt-4 border-t border-gray-200">
+                            <div className="pt-3 lg:pt-4 border-t border-gray-200">
                               <motion.a
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
                                 href="/services"
-                                className="flex items-center justify-center w-full py-3 px-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-bold rounded-xl hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 shadow-lg cursor-pointer"
+                                className="flex items-center justify-center w-full py-2 lg:py-3 px-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-bold rounded-xl hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 shadow-lg cursor-pointer text-sm lg:text-base"
                                 onClick={() => {
-                                  setActiveDropdown(null) // Close dropdown on button click
+                                  setActiveDropdown(null)
                                 }}
                               >
                                 View All Services
@@ -380,18 +386,18 @@ const Navigation = () => {
               ))}
             </motion.div>
 
-            {/* Get Quote Button */}
+            {/* Get Quote Button - Hidden on mobile */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="hidden lg:block"
+              className="hidden md:block"
             >
               <Link href="/contact">
                 <motion.button
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-8 py-3 rounded-full font-bold hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer"
+                  className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-6 lg:px-8 py-2 lg:py-3 rounded-full font-bold hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer text-sm lg:text-base"
                 >
                   Contact Us
                 </motion.button>
@@ -408,7 +414,7 @@ const Navigation = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="lg:hidden border-t border-gray-200 bg-white overflow-hidden relative z-[60]" // z-index increased
+              className="lg:hidden border-t border-gray-200 bg-white overflow-hidden relative z-[60]"
             >
               <motion.div
                 initial={{ y: -20 }}
@@ -437,101 +443,6 @@ const Navigation = () => {
                     )
                   })}
                 </motion.div>
-
-                {/* Mobile Navigation Links */}
-                {navItems.map((item, index) => (
-                  <motion.div
-                    key={item.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: 0.3 + index * 0.1 }}
-                    className="px-4"
-                  >
-                    <motion.a
-                      whileTap={{ scale: 0.98 }}
-                      href={item.href}
-                      className="flex items-center justify-between px-4 py-3 text-gray-700 hover:text-yellow-500 font-semibold rounded-lg hover:bg-gray-50 transition-all duration-300 cursor-pointer"
-                      onClick={(e) => {
-                        if (item.dropdown) {
-                          e.preventDefault()
-                          handleDropdownToggle(index)
-                        } else {
-                          // Close mobile menu if a non-dropdown link is clicked
-                          setIsMobileMenuOpen(false);
-                        }
-                      }}
-                    >
-                      <span>{item.name}</span>
-                      {item.dropdown && (
-                        <motion.div
-                          animate={{ rotate: activeDropdown === index ? 180 : 0 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <ChevronDown size={18} />
-                        </motion.div>
-                      )}
-                    </motion.a>
-
-                    {/* Enhanced Mobile Dropdown */}
-                    <AnimatePresence>
-                      {item.dropdown && activeDropdown === index && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3 }}
-                          className="mt-3 space-y-3 border-l-2 border-yellow-400 pl-4 overflow-hidden bg-white relative z-[70]" // z-index increased
-                        >
-                          {item.dropdown.map((dropdownItem, dropdownIndex) => {
-                            const IconComponent = dropdownItem.icon
-                            return (
-                              <motion.a
-                                key={dropdownItem.name}
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.2, delay: dropdownIndex * 0.05 }}
-                                href={dropdownItem.href}
-                                className="flex items-center space-x-3 p-3 text-gray-600 hover:text-yellow-500 hover:bg-gray-50 rounded-lg transition-all duration-200 group/mobile cursor-pointer"
-                                onClick={() => {
-                                  setActiveDropdown(null)
-                                  setIsMobileMenuOpen(false)
-                                }}
-                              >
-                                <motion.div
-                                  whileHover={{ scale: 1.1 }}
-                                  className={`w-8 h-8 bg-gradient-to-r ${dropdownItem.color} rounded-lg flex items-center justify-center shadow-md`}
-                                >
-                                  <IconComponent className="w-4 h-4 text-white" />
-                                </motion.div>
-                                <div className="flex-1 min-w-0">
-                                  <div className="font-semibold text-sm">{dropdownItem.name}</div>
-                                  <div className="text-xs text-gray-500 group-hover/mobile:text-gray-600 transition-colors duration-200">
-                                    {dropdownItem.description}
-                                  </div>
-                                </div>
-                              </motion.a>
-                            )
-                          })}
-                          <div className="mt-3 pt-3 border-t border-gray-200">
-                            <Link href="/services">
-                              <motion.button
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                                className="flex items-center justify-center w-full py-2 px-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-bold rounded-lg hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 text-sm cursor-pointer"
-                                onClick={() => {
-                                  setActiveDropdown(null)
-                                  setIsMobileMenuOpen(false)
-                                }}
-                              >
-                                View All Services
-                              </motion.button>
-                            </Link>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </motion.div>
-                ))}
 
                 {/* Mobile Social Media */}
                 <motion.div

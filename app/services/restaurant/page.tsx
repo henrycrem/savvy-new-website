@@ -1,94 +1,92 @@
 "use client"
 
+
 import {
   UtensilsCrossed,
   ChefHat,
   Users,
   ShieldCheck,
-  TrendingUp,
   Clock,
   CheckCircle,
   Star,
   Award,
   Heart,
   Utensils,
-  BookOpen,
+  Truck,
 } from "lucide-react"
 
 const features = [
   {
     icon: ChefHat,
-    title: "Kitchen Design & Setup",
-    description: "Professional kitchen layouts optimized for efficiency, safety, and culinary excellence.",
+    title: "Continental & Local Cuisine",
+    description: "Diverse menu featuring both international continental dishes and authentic local Liberian cuisine.",
   },
   {
-    icon: BookOpen,
-    title: "Menu Development",
-    description: "Strategic menu creation with cost analysis, seasonal planning, and signature dish development.",
+    icon: Utensils,
+    title: "Fresh Quality Ingredients",
+    description: "All meals prepared with fresh, high-quality ingredients for the best taste and nutrition.",
   },
   {
     icon: Users,
-    title: "Staff Training Programs",
-    description: "Comprehensive training for kitchen staff, servers, and management teams.",
+    title: "Dine-In Experience",
+    description: "Comfortable restaurant atmosphere perfect for family meals, dates, and business meetings.",
   },
   {
-    icon: ShieldCheck,
-    title: "Food Safety Compliance",
-    description: "Complete food safety protocols, HACCP implementation, and health department compliance.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Financial Management",
-    description: "Cost control systems, inventory management, and profit optimization strategies.",
+    icon: Truck,
+    title: "Food Delivery Service",
+    description: "Convenient delivery service bringing our delicious meals directly to your location.",
   },
   {
     icon: Clock,
-    title: "Operational Efficiency",
-    description: "Streamlined workflows, service protocols, and quality control systems.",
+    title: "Extended Hours",
+    description: "Open throughout the day to serve breakfast, lunch, dinner, and everything in between.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Food Safety Standards",
+    description: "Strict hygiene and food safety protocols ensuring every meal is safe and delicious.",
   },
 ]
 
 const services = [
   {
-    title: "Restaurant Concept & Design",
-    description:
-      "From initial concept to final design, we create restaurants that captivate customers and optimize operations.",
+    title: "Continental Cuisine",
+    description: "International dishes prepared with authentic flavors and modern cooking techniques.",
     items: [
-      "Concept development & theme design",
-      "Interior design & layout planning",
-      "Kitchen design & equipment selection",
-      "Branding & atmosphere creation",
+      "European-style pasta and risotto",
+      "American classics and steaks",
+      "Asian fusion dishes",
+      "Mediterranean specialties",
     ],
   },
   {
-    title: "Menu Engineering",
-    description:
-      "Strategic menu development that balances customer appeal with profitability and operational efficiency.",
+    title: "Local Liberian Dishes",
+    description: "Traditional Liberian cuisine prepared with authentic recipes and local ingredients.",
     items: [
-      "Recipe development & standardization",
-      "Cost analysis & pricing strategy",
-      "Seasonal menu planning",
-      "Dietary accommodation options",
+      "Jollof rice and fried rice",
+      "Palm butter and cassava leaf",
+      "Grilled fish and chicken",
+      "Traditional soups and stews",
     ],
   },
   {
-    title: "Operations Management",
-    description: "Complete operational oversight ensuring consistent quality, efficiency, and customer satisfaction.",
+    title: "Dine-In Restaurant",
+    description: "Comfortable restaurant setting for enjoying meals with family, friends, or colleagues.",
     items: [
-      "Staff recruitment & training",
-      "Inventory & supply chain management",
-      "Quality control systems",
-      "Customer service protocols",
+      "Air-conditioned dining area",
+      "Family-friendly atmosphere",
+      "Private dining options",
+      "Professional table service",
     ],
   },
   {
-    title: "Marketing & Growth",
-    description: "Strategic marketing initiatives to build brand recognition and drive customer loyalty.",
+    title: "Delivery Service",
+    description: "Fast and reliable food delivery bringing restaurant-quality meals to your doorstep.",
     items: [
-      "Brand identity & marketing strategy",
-      "Social media & digital marketing",
-      "Customer loyalty programs",
-      "Event planning & catering services",
+      "Hot food delivery guarantee",
+      "Wide delivery coverage area",
+      "Online and phone ordering",
+      "Contactless delivery options",
     ],
   },
 ]
@@ -96,23 +94,23 @@ const services = [
 const testimonials = [
   {
     name: "David Rodriguez",
-    business: "Coastal Bistro",
+    business: "Regular Customer",
     quote:
-      "Savvy Group transformed our struggling restaurant into the most popular dining destination in town. Their expertise in every aspect was remarkable.",
+      "The variety of food here is amazing! I love that I can get both continental dishes and authentic Liberian food. The delivery is always fast too.",
     rating: 5,
   },
   {
     name: "Maria Santos",
-    business: "Fusion Kitchen",
+    business: "Local Resident",
     quote:
-      "The menu development and staff training programs they provided elevated our restaurant to fine dining standards. Revenue increased by 200%.",
+      "Best restaurant in the area! The jollof rice is incredible and the continental dishes are restaurant-quality. Great for family dinners.",
     rating: 5,
   },
   {
     name: "James Thompson",
-    business: "Garden Grill",
+    business: "Business Professional",
     quote:
-      "From kitchen design to marketing strategy, Savvy Group handled everything professionally. We've been booked solid since opening.",
+      "Perfect for business lunches and client meetings. Professional atmosphere, excellent food, and reliable service every time.",
     rating: 5,
   },
 ]
@@ -120,56 +118,55 @@ const testimonials = [
 const process = [
   {
     step: "01",
-    title: "Concept Development",
+    title: "Browse Our Menu",
     description:
-      "We work with you to develop a unique restaurant concept that stands out in the competitive dining market.",
+      "Explore our diverse menu featuring continental and local dishes, with options for every taste and preference.",
   },
   {
     step: "02",
-    title: "Design & Planning",
-    description:
-      "Complete restaurant design including kitchen layout, dining area, and operational workflow optimization.",
+    title: "Place Your Order",
+    description: "Order in-person for dine-in, or call/order online for convenient delivery to your location.",
   },
   {
     step: "03",
-    title: "Setup & Training",
-    description:
-      "Equipment installation, staff recruitment and training, and system implementation for smooth operations.",
+    title: "Fresh Preparation",
+    description: "Our skilled chefs prepare each dish fresh using quality ingredients and authentic recipes.",
   },
   {
     step: "04",
-    title: "Launch & Support",
-    description: "Grand opening support and ongoing operational guidance to ensure sustained success and growth.",
+    title: "Enjoy Your Meal",
+    description: "Savor your delicious meal in our comfortable restaurant or in the comfort of your own space.",
   },
 ]
 
 const specialties = [
   {
     icon: Utensils,
-    title: "Fine Dining",
-    description: "Upscale restaurants with sophisticated menus and exceptional service standards.",
-  },
-  {
-    icon: Users,
-    title: "Casual Dining",
-    description: "Family-friendly restaurants with comfortable atmospheres and diverse menu options.",
-  },
-  {
-    icon: Clock,
-    title: "Fast Casual",
-    description: "Quick-service restaurants that don't compromise on food quality or customer experience.",
+    title: "Continental Dishes",
+    description: "International cuisine with authentic flavors and modern presentation.",
   },
   {
     icon: Heart,
-    title: "Specialty Cuisine",
-    description: "Ethnic restaurants and specialty dining concepts with authentic cultural experiences.",
+    title: "Local Favorites",
+    description: "Traditional Liberian dishes prepared with time-honored recipes.",
+  },
+  {
+    icon: Users,
+    title: "Family Dining",
+    description: "Comfortable atmosphere perfect for family meals and gatherings.",
+  },
+  {
+    icon: Truck,
+    title: "Fast Delivery",
+    description: "Quick and reliable delivery service throughout the area.",
   },
 ]
 
 export default function RestaurantPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
-     
+    <div className="min-h-screen bg-gray-50 mt-32">
+      
+
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-red-600 via-pink-500 to-red-700 text-white py-24 overflow-hidden">
         <div className="absolute inset-0">
@@ -190,26 +187,26 @@ export default function RestaurantPage() {
                 </div>
                 <div>
                   <h1 className="text-5xl font-bold mb-2">Restaurant</h1>
-                  <p className="text-xl text-white/90">Management Services</p>
+                  <p className="text-xl text-white/90">Continental & Local Cuisine</p>
                 </div>
               </div>
               <p className="text-xl text-white/90 mb-8 leading-relaxed">
-                Create exceptional dining experiences with our comprehensive restaurant management services. From
-                concept to cuisine, we ensure your restaurant becomes a culinary destination that customers love.
+                Experience the best of both worlds with our diverse menu featuring delicious continental dishes and
+                authentic Liberian cuisine. Dine with us or enjoy delivery to your location.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button className="bg-white text-red-600 px-8 py-4 rounded-full font-bold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-xl">
-                  Start Your Restaurant
+                  View Menu
                 </button>
                 <button className="border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-red-600 transition-all duration-300">
-                  View Success Stories
+                  Order Delivery
                 </button>
               </div>
             </div>
             <div className="relative">
               <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
                 <img
-                  src="/placeholder.svg?height=400&width=500&text=Elegant+Restaurant+Interior"
+                  src="/placeholder.svg?height=400&width=500&text=Restaurant+Dining+Area"
                   alt="Restaurant Interior"
                   className="w-full h-80 object-cover rounded-2xl shadow-lg"
                 />
@@ -227,10 +224,10 @@ export default function RestaurantPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Restaurant <span className="text-red-600">Specialties</span>
+              Our <span className="text-red-600">Specialties</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We specialize in creating diverse dining experiences across multiple restaurant formats and cuisines.
+              From continental favorites to local Liberian dishes, we offer something delicious for everyone.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -255,10 +252,10 @@ export default function RestaurantPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Comprehensive <span className="text-red-600">Restaurant Solutions</span>
+              Why Choose Our <span className="text-red-600">Restaurant</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Every aspect of restaurant management covered by our expert team to ensure your culinary success.
+              Quality food, diverse menu options, and convenient service make us your go-to dining destination.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -286,10 +283,10 @@ export default function RestaurantPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Our <span className="text-red-600">Service Areas</span>
+              Our <span className="text-red-600">Menu & Services</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Complete restaurant management covering every aspect of your culinary business operations.
+              Explore our diverse food offerings and convenient dining options.
             </p>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -319,10 +316,10 @@ export default function RestaurantPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Our <span className="text-red-600">Process</span>
+              How We <span className="text-red-600">Serve You</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              A proven methodology that transforms restaurant concepts into thriving culinary destinations.
+              From menu selection to enjoying your meal, we make every step of your dining experience exceptional.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -349,11 +346,10 @@ export default function RestaurantPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Restaurant <span className="text-red-600">Success Stories</span>
+              Customer <span className="text-red-600">Reviews</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Discover how we've helped restaurant owners create exceptional dining experiences and profitable
-              businesses.
+              See what our satisfied customers say about our food and service.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -382,17 +378,16 @@ export default function RestaurantPage() {
       <section className="bg-gradient-to-r from-red-600 to-pink-500 text-white py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <UtensilsCrossed className="w-16 h-16 mx-auto mb-6 text-white/90" />
-          <h2 className="text-4xl font-bold mb-6">Ready to Create Culinary Excellence?</h2>
+          <h2 className="text-4xl font-bold mb-6">Ready for Delicious Food?</h2>
           <p className="text-xl text-white/90 mb-8">
-            Let's transform your restaurant vision into a dining destination that delights customers and drives
-            profitability.
+            Experience our diverse menu of continental and local dishes. Dine with us or order delivery today!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="bg-white text-red-600 px-8 py-4 rounded-full font-bold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-xl text-lg">
-              Launch Your Restaurant
+              Make Reservation
             </button>
             <button className="border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-red-600 transition-all duration-300 text-lg">
-              Schedule Consultation
+              Order Delivery
             </button>
           </div>
         </div>

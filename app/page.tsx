@@ -10,7 +10,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="font-sans ">
+    <div className="font-sans mt-32 ">
       {/* <Navigation/> */}
       <HeroSection/>
       <AboutServicesSection/>

@@ -30,7 +30,7 @@ const WhyChooseUsSection = () => {
       icon: Award,
       title: "Proven Track Record",
       description:
-        "With 5+ years of successful operations across Liberia, we've built a reputation for quality, reliability, and customer satisfaction in all our service areas.",
+        "With 10+ years of successful operations across Liberia, we've built a reputation for quality, reliability, and customer satisfaction in all our service areas.",
     },
     {
       icon: Clock,
