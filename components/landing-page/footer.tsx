@@ -1,13 +1,20 @@
 "use client"
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Facebook, Twitter, Instagram, Youtube, Linkedin } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Youtube, Linkedin, Heart } from 'lucide-react';
 
 const Footer: React.FC = () => {
   // State to track logo loading errors
   const [logoError, setLogoError] = useState(false);
   // Ref to access the logo image element
   const logoRef = useRef<HTMLImageElement>(null);
+  // State for dynamic year
+  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
+
+  // Update year dynamically
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
 
   // Check if logo image exists on component mount and set up event listeners
   useEffect(() => {
@@ -154,18 +161,35 @@ const Footer: React.FC = () => {
 
         {/* Bottom section */}
         <div className="border-t border-white/20 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            {/* Copyright */}
             <p className="text-gray-300 mb-4 md:mb-0">
-              Copyright © 2025 Savvy Group. All Rights Reserved.
+              Copyright © {currentYear} Savvy Group. All Rights Reserved.
             </p>
-            <div className="flex space-x-6">
-              <a href="#" className="text-gray-300 hover:text-orange-500 transition-colors duration-300">
-                User Terms & Conditions
-              </a>
-              <span className="text-gray-500">|</span>
-              <a href="#" className="text-gray-300 hover:text-orange-500 transition-colors duration-300">
-                Privacy Policy
-              </a>
+            
+            {/* Company Credit - Your Development Company */}
+            <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
+              <div className="flex space-x-6">
+                <a href="#" className="text-gray-300 hover:text-orange-500 transition-colors duration-300">
+                  User Terms & Conditions
+                </a>
+                <span className="text-gray-500">|</span>
+                <a href="#" className="text-gray-300 hover:text-orange-500 transition-colors duration-300">
+                  Privacy Policy
+                </a>
+              </div>
+              
+              {/* Your company credit */}
+              <div className="flex items-center space-x-2 text-gray-300 text-sm">
+                <span>Designed and Developed by</span>
+                <a
+                  href="#"
+                  className="text-orange-500 hover:text-orange-400 font-semibold transition-colors duration-300 cursor-pointer flex items-center space-x-1"
+                >
+                  <Heart className="w-3 h-3 text-red-400" />
+                  <span>Deft Technology Consultancy</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -179,6 +203,6 @@ const Footer: React.FC = () => {
       </div>
     </footer>
   );
-};
+}
 
-export default Footer;
+export default Footer
