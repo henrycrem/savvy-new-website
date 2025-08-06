@@ -172,7 +172,7 @@ const AboutServicesSection = () => {
                 </motion.span>
               </motion.h2>
               {/* Description */}
-              <motion.p variants={itemVariants} className="text-gray-600 text-lg leading-relaxed">
+              <motion.p variants={itemVariants} className="text-gray-600 text-lg text-justify leading-relaxed">
                 At Savvy Group, we combine expertise across multiple industries to deliver exceptional service and
                 quality. From premium hospitality experiences to reliable construction projects and sophisticated cigar lounge services, our diverse portfolio
                 serves Liberia's growing business landscape with excellence and innovation.

@@ -86,7 +86,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
-          className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6"
+          className="text-gray-300 text-base sm:text-lg text-justify leading-relaxed mb-6"
         >
           {description}
         </motion.p>

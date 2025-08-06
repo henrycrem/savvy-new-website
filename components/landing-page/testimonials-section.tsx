@@ -18,7 +18,7 @@ const TestimonialsSection = () => {
       client: {
         name: "Michael Johnson",
         position: "Owner, Brew Haven Café",
-        image: "/images/testimonial-1.jpg",
+        image: "/images/test-man-five.jpeg",
         serviceIcon: Coffee,
       },
     },
@@ -30,7 +30,7 @@ const TestimonialsSection = () => {
       client: {
         name: "Sarah Williams",
         position: "Director, Seaside Dining",
-        image: "/images/testimonial-2.jpg",
+        image: "/images/test-woman-one.jpeg",
         serviceIcon: UtensilsCrossed,
       },
     },
@@ -42,7 +42,7 @@ const TestimonialsSection = () => {
       client: {
         name: "Robert Taylor",
         position: "CEO, Taylor Enterprises",
-        image: "/images/testimonial-3.jpg",
+        image: "/images/test-man-one.jpeg",
         serviceIcon: HardHat,
       },
     },
@@ -54,7 +54,7 @@ const TestimonialsSection = () => {
       client: {
         name: "Jennifer Adams",
         position: "Manager, Skyline Lounge",
-        image: "/images/testimonial-4.jpg",
+        image: "/images/test-woman-two.jpeg",
         serviceIcon: Wine,
       },
     },
@@ -66,7 +66,7 @@ const TestimonialsSection = () => {
       client: {
         name: "Daniel Morris",
         position: "Operations Director, Global Imports",
-        image: "/images/testimonial-5.jpg",
+        image: "/images/test-man-four.jpeg",
         serviceIcon: Car,
       },
     },
