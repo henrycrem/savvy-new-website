@@ -58,10 +58,11 @@ const HeroSection = () => {
     },
   }
 
+  // FIXED: Changed opacity from 50 to 1
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
-      opacity: 50,
+      opacity: 1, // Fixed: was 50, now 1
       y: 0,
       transition: {
         duration: 0.6,
@@ -184,23 +185,36 @@ const HeroSection = () => {
               across coffee shops, restaurants, construction, bars, and car rentals in Liberia.
             </motion.p>
 
-            {/* CTA Buttons - FIXED VERSION */}
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4">
+            {/* CTA Buttons - ENHANCED FIXED VERSION */}
+            <motion.div 
+              variants={itemVariants} 
+              className="flex flex-col sm:flex-row gap-4 relative z-10"
+            >
               {/* Get A Quote Button */}
-              <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
+              <motion.div 
+                whileHover={{ scale: 1.05, y: -2 }} 
+                whileTap={{ scale: 0.95 }}
+                className="relative z-10"
+              >
                 <Link
                   href="/contact"
-                  className="inline-block bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-8 py-4 rounded-full font-bold hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 shadow-lg cursor-pointer text-center"
+                  className="inline-flex items-center justify-center bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-8 py-4 rounded-full font-bold hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 shadow-lg cursor-pointer min-w-[160px] text-center relative z-10 opacity-100"
+                  style={{ pointerEvents: 'auto' }}
                 >
                   Get A Quote
                 </Link>
               </motion.div>
 
               {/* View Our Services Button */}
-              <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
+              <motion.div 
+                whileHover={{ scale: 1.05, y: -2 }} 
+                whileTap={{ scale: 0.95 }}
+                className="relative z-10"
+              >
                 <Link
                   href="/services"
-                  className="inline-block border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 hover:border-gray-400 transition-all duration-300 cursor-pointer text-center"
+                  className="inline-flex items-center justify-center border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 hover:border-gray-400 transition-all duration-300 cursor-pointer min-w-[180px] text-center relative z-10 opacity-100"
+                  style={{ pointerEvents: 'auto' }}
                 >
                   View Our Services
                 </Link>

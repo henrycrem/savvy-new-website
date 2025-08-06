@@ -25,6 +25,7 @@ import {
   Eye,
   Compass,
 } from "lucide-react"
+import Link from "next/link"
 
 const AboutPage = () => {
   const stats = [
@@ -341,7 +342,7 @@ const AboutPage = () => {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="h-px bg-yellow-400"
               ></motion.div>
-              <span>About Savvy Group</span>
+              <Link href="/about">About Savvy Group</Link>
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: 32 }}
@@ -424,7 +425,7 @@ const AboutPage = () => {
                 whileTap={{ scale: 0.95 }}
                 className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-8 py-4 rounded-full font-bold hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 shadow-lg inline-flex items-center space-x-2"
               >
-                <span>Our Services</span>
+                <Link href="/about">Our Services</Link>
                 <ArrowRight size={20} />
               </motion.button>
               <motion.button
@@ -432,7 +433,9 @@ const AboutPage = () => {
                 whileTap={{ scale: 0.95 }}
                 className="border-2 border-white/30 text-white px-8 py-4 rounded-full font-semibold hover:bg-white/10 hover:border-white/50 transition-all duration-300 backdrop-blur-sm"
               >
+                <Link href="/contact">
                 Contact Us
+                </Link>
               </motion.button>
             </motion.div>
           </motion.div>
@@ -508,7 +511,7 @@ const AboutPage = () => {
                   className="inline-flex items-center gap-2 text-yellow-500 font-medium mb-4"
                 >
                   <div className="w-8 h-px bg-yellow-500"></div>
-                  <span>Our Story</span>
+                  <Link href="/about">Our Story</Link>
                 </motion.div>
 
                 <motion.h2
@@ -554,7 +557,9 @@ const AboutPage = () => {
                     whileTap={{ scale: 0.95 }}
                     className="bg-yellow-500 text-black px-8 py-3 rounded-full font-semibold hover:bg-yellow-600 transition-colors duration-300 shadow-lg"
                   >
+                    <Link href="/about">
                     Learn More
+                    </Link>
                   </motion.button>
                   <motion.div
                     whileHover={{ scale: 1.1, rotate: 5 }}
@@ -892,7 +897,7 @@ const AboutPage = () => {
                       whileTap={{ scale: 0.95 }}
                       className="inline-flex items-center space-x-2 bg-yellow-500 hover:bg-yellow-600 text-black px-6 py-3 rounded-full font-semibold transition-colors duration-300 shadow-lg"
                     >
-                      <span>Learn More</span>
+                      <Link href="/about">Learn More</Link>
                       <ArrowRight size={18} />
                     </motion.button>
                   </div>
@@ -1093,7 +1098,7 @@ const AboutPage = () => {
                 whileTap={{ scale: 0.95 }}
                 className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-4 rounded-full font-bold transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center space-x-2"
               >
-                <span>Get Started Today</span>
+                <Link href="/contact">Get Started Today</Link>
                 <ArrowRight size={20} />
               </motion.button>
               <motion.button
@@ -1101,7 +1106,9 @@ const AboutPage = () => {
                 whileTap={{ scale: 0.95 }}
                 className="border-2 border-black/20 text-black px-8 py-4 rounded-full font-semibold hover:bg-black/10 hover:border-black/30 transition-all duration-300 backdrop-blur-sm"
               >
+                <Link href="about">
                 View Our Services
+                </Link>
               </motion.button>
             </div>
           </motion.div>
