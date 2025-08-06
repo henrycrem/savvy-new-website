@@ -18,6 +18,8 @@ interface ProjectCardProps {
   reverse?: boolean;
 }
 
+
+
 const ProjectCard: React.FC<ProjectCardProps> = ({
   title,
   description,
@@ -159,7 +161,7 @@ const ProjectsPage: React.FC = () => {
       location: "Nationwide, Liberia",
       area: "25 square meters",
       duration: "2 months",
-      imageSrc: "/images/police-boot.jpg",
+      imageSrc: "/images/police-boot.webp",
       imageAlt: "Smart Police Booth - Modern security checkpoint facility",
       timeline: "2024",
       category: "Public Infrastructure"

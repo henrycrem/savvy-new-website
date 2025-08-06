@@ -140,7 +140,7 @@ const FeaturedProject: React.FC = () => {
     location: "Liberia",
     area: "25m²",
     duration: "2 months",
-    imageSrc: "/images/police-boot.jpg",
+    imageSrc: "/images/police-boot.webp",
     imageAlt: "Smart Police Booth - Modern security checkpoint facility",
     timeline: "2024",
     category: "Public Infrastructure"
