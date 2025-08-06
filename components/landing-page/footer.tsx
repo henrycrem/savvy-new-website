@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Facebook, Twitter, Instagram, Youtube, Linkedin, Heart } from 'lucide-react';
+import Link from 'next/link';
 
 const Footer: React.FC = () => {
   // State to track logo loading errors
@@ -198,7 +199,9 @@ const Footer: React.FC = () => {
       {/* Contact Us button (floating) */}
       <div className="absolute top-8 right-8">
         <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-          Contact Us
+           <Link href="/contact">
+                  Contact Us
+                  </Link>
         </button>
       </div>
     </footer>

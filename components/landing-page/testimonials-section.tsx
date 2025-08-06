@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react"
 import { Star, ArrowLeft, ArrowRight, Quote, Coffee, UtensilsCrossed, HardHat, Wine, Car } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
+import Link from "next/link"
 
 const TestimonialsSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -369,7 +370,10 @@ const TestimonialsSection = () => {
             whileTap={{ scale: 0.95 }}
             className="bg-yellow-500 text-blue-900 px-8 py-4 rounded-full font-bold hover:bg-yellow-400 transition-colors duration-300 shadow-lg"
           >
+          <Link href="/contact">
+          
             Get Started Today
+          </Link>
           </motion.button>
         </motion.div>
       </div>

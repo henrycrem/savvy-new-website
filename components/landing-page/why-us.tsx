@@ -17,6 +17,7 @@ import {
   CheckCircle,
 } from "lucide-react"
 import { motion } from "framer-motion"
+import Link from "next/link"
 
 const WhyChooseUsSection = () => {
   const features = [
@@ -233,7 +234,9 @@ const WhyChooseUsSection = () => {
                 whileTap={{ scale: 0.95 }}
                 className="bg-yellow-500 text-black px-8 py-3 rounded-full font-semibold hover:bg-yellow-600 transition-colors duration-300 shadow-lg"
               >
+                <Link href="/about">
                 Learn More
+                </Link>
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.1, rotate: 5 }}

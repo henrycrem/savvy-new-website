@@ -1,8 +1,9 @@
 "use client"
 
 import { useState } from "react"
-import { ArrowRight, ArrowLeft, Coffee, UtensilsCrossed, HardHat, Wine, Car, Award } from "lucide-react"
+import { ArrowRight, ArrowLeft, Coffee, UtensilsCrossed, HardHat, Wine, Car, Award, Cigarette } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
+import Link from "next/link"
 
 const AboutServicesSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -28,14 +29,14 @@ const AboutServicesSection = () => {
     },
   ]
 
-  // Updated services array to use image paths for all services
+  // Updated services array with Cargo Bar included
   const services = [
     {
       icon: Coffee,
       title: "Coffee Shop",
       description:
         "Premium coffee experiences with artisanal blends, cozy atmospheres, and exceptional customer service. We create spaces where communities gather and connections are made.",
-      image: "/images/coffeeShop.png", // Points to public/images/coffeeShop.png
+      image: "/images/coffeeShop.png",
       color: "from-amber-500 to-yellow-500",
     },
     {
@@ -43,7 +44,7 @@ const AboutServicesSection = () => {
       title: "Restaurant",
       description:
         "Full-service restaurant operations featuring local and international cuisine, professional kitchen management, and memorable dining experiences for every occasion.",
-      image: "/images/restu.png", // Points to public/images/restaurant.png (you need to add this file)
+      image: "/images/restu.png",
       color: "from-red-500 to-pink-500",
     },
     {
@@ -51,7 +52,7 @@ const AboutServicesSection = () => {
       title: "Construction",
       description:
         "Commercial and residential construction projects with quality craftsmanship, timely delivery, and sustainable building practices that contribute to Liberia's infrastructure development.",
-      image: "/images/construction.png", // Points to public/images/construction.png (you need to add this file)
+      image: "/images/construction.png",
       color: "from-blue-500 to-cyan-500",
     },
     {
@@ -59,15 +60,23 @@ const AboutServicesSection = () => {
       title: "Bar & Lounge",
       description:
         "Upscale bar and lounge experiences with premium beverages, sophisticated ambiance, and professional service that creates unforgettable social experiences.",
-      image: "/images/bar.png", // Points to public/images/barLounge.png (you need to add this file)
+      image: "/images/bar.png",
       color: "from-purple-500 to-indigo-500",
+    },
+    {
+      icon: Cigarette,
+      title: "Cigar Bar",
+      description:
+        "Premium cigar lounge experience featuring finest cigars, comfortable seating, and sophisticated atmosphere. A refined space for cigar enthusiasts to relax and enjoy premium tobacco products.",
+      image: "/images/cigar.jpg", // You'll need to add this image to your public/images folder
+      color: "from-amber-600 to-orange-600",
     },
     {
       icon: Car,
       title: "Car Rental",
       description:
         "Premium vehicle rental and fleet management services with well-maintained vehicles, flexible rental options, and reliable transportation solutions across Liberia.",
-      image: "/images/car.png", // Points to public/images/carRental.png (you need to add this file)
+      image: "/images/car.png",
       color: "from-green-500 to-emerald-500",
     },
   ]
@@ -165,15 +174,15 @@ const AboutServicesSection = () => {
               {/* Description */}
               <motion.p variants={itemVariants} className="text-gray-600 text-lg leading-relaxed">
                 At Savvy Group, we combine expertise across multiple industries to deliver exceptional service and
-                quality. From premium hospitality experiences to reliable construction projects, our diverse portfolio
+                quality. From premium hospitality experiences to reliable construction projects and sophisticated cigar lounge services, our diverse portfolio
                 serves Liberia's growing business landscape with excellence and innovation.
               </motion.p>
               {/* Stats */}
               <motion.div variants={itemVariants} className="grid grid-cols-3 gap-6">
                 {[
-                  { number: "5", label: "Service Areas" },
-                  { number: "50+", label: "Projects" },
-                  { number: "100+", label: "Happy Clients" },
+                  { number: "6", label: "Service Areas" },
+                  { number: "75+", label: "Projects" },
+                  { number: "150+", label: "Happy Clients" },
                 ].map((stat, index) => (
                   <motion.div
                     key={index}
@@ -199,7 +208,9 @@ const AboutServicesSection = () => {
                   whileTap={{ scale: 0.95 }}
                   className="bg-yellow-500 text-black px-8 py-3 rounded-full font-semibold hover:bg-yellow-600 transition-colors duration-300 shadow-lg"
                 >
+                  <Link href="/about">
                   Learn More
+                  </Link>
                 </motion.button>
                 <motion.button
                   whileHover={{ scale: 1.1, rotate: 5 }}
@@ -404,79 +415,88 @@ const AboutServicesSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -10 }}
+                whileHover={{ y: -10, scale: 1.02 }}
                 className="group"
               >
                 <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100">
-                  {/* Service Image - Modified to use <img> tag with object-fit */}
+                  {/* Service Image - Enhanced Display */}
                   <div className="aspect-[4/3] relative overflow-hidden">
-                    {/* Background Image using img tag */}
-                    {/* Added motion.div wrapper for potential hover zoom effect */}
                     <motion.div
-                      whileHover={{ scale: 1.05 }} // Slight zoom on hover
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.6, ease: "easeOut" }}
                       className="absolute inset-0"
                     >
                       <img
                         src={service.image}
                         alt={`${service.title} Service`}
-                        className="w-full h-full object-cover" // object-cover ensures the image covers the area nicely
+                        className="w-full h-full object-cover transition-transform duration-500"
+                        onError={(e) => {
+                          // Fallback in case image doesn't load
+                          e.currentTarget.style.display = 'none';
+                        }}
                       />
                     </motion.div>
-                    {/* Overlay */}
+                    
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/40 transition-all duration-300"></div>
+                    
+                    {/* Service Icon Badge */}
                     <motion.div
-                      // Removed whileHover from here as it's now on the image container
-                      className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"
-                    ></motion.div>
-                    {/* Service Icon on Image */}
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
+                      initial={{ scale: 0, opacity: 0 }}
+                      whileInView={{ scale: 1, opacity: 1 }}
                       transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                      className="absolute bottom-4 left-4 z-10" // Added z-10 to ensure icon is above overlay
+                      className="absolute top-4 right-4 z-20"
                     >
                       <motion.div
-                        whileHover={{ scale: 1.1, rotate: 10 }}
-                        className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-full flex items-center justify-center shadow-lg`}
+                        whileHover={{ scale: 1.1, rotate: 15 }}
+                        className={`w-12 h-12 bg-gradient-to-r ${service.color} rounded-xl flex items-center justify-center shadow-lg backdrop-blur-sm`}
                       >
-                        <service.icon size={24} className="text-white" />
+                        <service.icon size={20} className="text-white" />
                       </motion.div>
                     </motion.div>
-                    {/* Service Icon Overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center z-10"> {/* Added z-10 */}
-                      <motion.div
-                        animate={{ rotate: [0, 5, -5, 0] }}
-                        transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY }}
-                        className="text-white text-center"
+
+                    {/* Service Title Overlay */}
+                    <div className="absolute bottom-4 left-4 right-4 z-20">
+                      <motion.h3
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                        className="text-white font-bold text-lg mb-1"
                       >
-                        <service.icon size={48} className="mx-auto mb-2 opacity-20" />
-                        <div className="text-sm font-medium opacity-60">Premium Service</div>
-                      </motion.div>
+                        {service.title}
+                      </motion.h3>
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: "100%" }}
+                        transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+                        className={`h-1 bg-gradient-to-r ${service.color} rounded-full`}
+                      ></motion.div>
                     </div>
+
+                    {/* Fallback Background */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-20 -z-10`}></div>
                   </div>
+                  
                   {/* Service Content */}
                   <div className="p-6">
-                    <motion.h3
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                      className="text-xl font-bold text-gray-900 mb-3"
-                    >
-                      {service.title}
-                    </motion.h3>
                     <motion.p
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                      className="text-gray-600 text-sm leading-relaxed mb-4"
+                      className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3"
                     >
                       {service.description}
                     </motion.p>
                     <motion.button
                       whileHover={{ x: 5 }}
-                      className="flex items-center space-x-2 text-yellow-500 hover:text-yellow-600 font-medium text-sm transition-all duration-300"
+                      whileTap={{ scale: 0.95 }}
+                      className="flex items-center space-x-2 text-yellow-500 hover:text-yellow-600 font-medium text-sm transition-all duration-300 group/btn"
                     >
                       <span>Learn more</span>
-                      <motion.div whileHover={{ x: 3 }}>
+                      <motion.div 
+                        whileHover={{ x: 3 }}
+                        className="group-hover/btn:translate-x-1 transition-transform duration-300"
+                      >
                         <ArrowRight size={16} />
                       </motion.div>
                     </motion.button>
@@ -498,7 +518,7 @@ const AboutServicesSection = () => {
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center space-x-3 bg-yellow-500 text-black px-8 py-4 rounded-full font-semibold hover:bg-yellow-600 transition-colors duration-300 shadow-lg hover:shadow-xl"
             >
-              <span>View All Services</span>
+              <Link href="/about">View All Services</Link>
               <motion.div
                 whileHover={{ rotate: 90 }}
                 className="w-8 h-8 bg-blue-900 rounded-full flex items-center justify-center"

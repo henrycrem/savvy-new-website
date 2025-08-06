@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react"
 import { Plus, Minus, MessageCircle, Phone, Coffee, UtensilsCrossed, HardHat, Wine, Car, Star } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
+import Link from "next/link"
 
 interface FAQItem {
   id: number
@@ -231,7 +232,9 @@ const FAQSection = () => {
                   whileTap={{ scale: 0.95 }}
                   className="bg-yellow-500 hover:bg-yellow-400 text-blue-900 px-8 py-4 rounded-full font-semibold transition-all duration-300 shadow-lg"
                 >
+                  <Link href="/contact">
                   Contact Us
+                  </Link>
                 </motion.button>
               </div>
               <motion.div

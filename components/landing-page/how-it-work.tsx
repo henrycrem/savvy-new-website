@@ -17,6 +17,7 @@ import {
   Car,
 } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
+import Link from "next/link"
 
 const ProcessSection = () => {
   const [activeStep, setActiveStep] = useState(0)
@@ -194,7 +195,9 @@ const ProcessSection = () => {
               whileTap={{ scale: 0.95 }}
               className="bg-yellow-500 text-black px-8 py-3 rounded-full font-semibold hover:bg-yellow-600 transition-colors duration-300 shadow-lg"
             >
+              <Link href="/contact">
               Get Started
+              </Link>
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.1, rotate: 5 }}

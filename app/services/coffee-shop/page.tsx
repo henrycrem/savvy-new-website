@@ -171,7 +171,7 @@ export default function CoffeeShopPage() {
             <div className="relative">
               <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
                 <img
-                  src="/placeholder.svg?height=400&width=500&text=Cozy+Coffee+Shop+Interior"
+                  src="/images/coffee-page.png"
                   alt="Coffee Shop Interior"
                   className="w-full h-80 object-cover rounded-2xl shadow-lg"
                 />
