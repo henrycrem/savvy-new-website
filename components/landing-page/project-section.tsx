@@ -1,20 +1,20 @@
 "use client"
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import Link from 'next/link';
+import React from 'react'
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import { OptimizedImage } from '../OptimizedImage'
 
 interface ProjectCardProps {
-  title: string;
-  description: string;
-  location: string;
-  area: string;
-  duration: string;
-  imageSrc: string;
-  imageAlt: string;
-  timeline: string;
-  category: string;
+  title: string
+  description: string
+  location: string
+  area: string
+  duration: string
+  imageSrc: string
+  imageAlt: string
+  timeline: string
+  category: string
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -43,12 +43,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           transition={{ duration: 0.3 }}
           className="relative rounded-3xl overflow-hidden shadow-2xl group"
         >
-          <div className="relative h-[350px] lg:h-[450px]">
-            <Image
+          <div className="relative h-[350px] lg:h-[450px] bg-gray-800">
+            <OptimizedImage
               src={imageSrc}
               alt={imageAlt}
               fill
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
+              className="group-hover:scale-105 transition-transform duration-500"
+              priority={true}
+              quality={90}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
           </div>
@@ -120,9 +123,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         >
           View Project Details
           <svg 
-            className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" 
-            fill="none" 
-            stroke="currentColor" 
+            className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
+            fill="none"
+            stroke="currentColor"
             viewBox="0 0 24 24"
           >
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -130,8 +133,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </motion.button>
       </div>
     </motion.div>
-  );
-};
+  )
+}
 
 const FeaturedProject: React.FC = () => {
   const project = {
@@ -140,11 +143,11 @@ const FeaturedProject: React.FC = () => {
     location: "Liberia",
     area: "25m²",
     duration: "2 months",
-    imageSrc: "/images/police-boot.webp",
+    imageSrc: "/images/police-boot.jpg",
     imageAlt: "Smart Police Booth - Modern security checkpoint facility",
     timeline: "2024",
     category: "Public Infrastructure"
-  };
+  }
 
   return (
     <section className="py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 relative overflow-hidden">
@@ -190,13 +193,13 @@ const FeaturedProject: React.FC = () => {
             className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-4 rounded-full text-lg transition-all duration-300 shadow-lg"
           >
             <Link href="/projects">
-            View All Projects
+              View All Projects
             </Link>
           </motion.button>
         </motion.div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default FeaturedProject;
+export default FeaturedProject
