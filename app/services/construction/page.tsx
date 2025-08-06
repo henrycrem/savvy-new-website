@@ -209,7 +209,7 @@ export default function ConstructionPage() {
             <div className="relative">
               <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
                 <img
-                  src="/placeholder.svg?height=400&width=500&text=Modern+Construction+Project"
+                  src="/images/construction-page.png"
                   alt="Construction Project"
                   className="w-full h-80 object-cover rounded-2xl shadow-lg"
                 />
