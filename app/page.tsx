@@ -12,14 +12,16 @@ export default function Home() {
   return (
     <div className="font-sans mt-32 ">
 
-      <HeroSection/>
+      {/* <HeroSection/>
       <AboutServicesSection/>
       <ProcessSection/>
       <WhyChooseUsSection/>
       <ProjectsPage/>
       <TeamSection/>
       <TestimonialsSection/>
-      <FAQ/>
+      <FAQ/> */}
+
+      <h1>Down of now!!!</h1>
 
    
     </div>
